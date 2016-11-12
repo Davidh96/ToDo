@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 /**
  * Created by David on 12/11/2016.
  */
@@ -16,7 +18,7 @@ public class databaseManager extends SQLiteOpenHelper {
     private static final String dbName="ToDoDB";
     private static final String taskTableName="task";
 
-    private SQLiteDatabase db;
+    private static SQLiteDatabase db;
 
     //create table sql code
     String createTaskTable = "Create Table " + taskTableName +"(" +
@@ -40,6 +42,23 @@ public class databaseManager extends SQLiteOpenHelper {
 
     }
 
+    public databaseManager open()
+    {
+        db=this.getWritableDatabase();
+        return this;
+    }
+
+//    public void close()
+//    {
+//        this.close();
+//    }
+
+    public databaseManager read()
+    {
+        db=this.getReadableDatabase();
+        return this;
+    }
+
     public void addTask(Task newTask){
         ContentValues newInsert = new ContentValues();
         newInsert.put("taskTitle",newTask.getTaskTitle());
@@ -47,10 +66,25 @@ public class databaseManager extends SQLiteOpenHelper {
         newInsert.put("listID",newTask.getListID());
         newInsert.put("startDate",newTask.getStartDate());
         newInsert.put("dueDate",newTask.getDueDate());
-        //newInsert.put();
-        db=this.getWritableDatabase();
+
         db.insert(taskTableName,null,newInsert);
-        this.close();
+
+
+    }
+
+    public Cursor readTasks()
+    {
+        //db=this.getReadableDatabase();
+        return   db.query(taskTableName,new String[]{
+                "_id",
+                "taskTitle",
+                "taskDescription",
+                "listID",
+                "startDate",
+                "dueDate"
+        },null,null,null,null,null);
+
+
     }
 
 
