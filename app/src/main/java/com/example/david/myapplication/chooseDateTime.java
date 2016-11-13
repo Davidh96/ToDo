@@ -32,9 +32,10 @@ public class chooseDateTime extends Activity{
 
     public void completeDateTime(View v) {
         String chosenDateString =   dateChosen.getYear() + "-" + (dateChosen.getMonth()+1) + "-" + dateChosen.getDayOfMonth();
-        String chosenTimeString =   timeChosen.getHour() + ":" + (timeChosen.getMinute());
+        String chosenTimeString =   timeChosen.getHour() + ":" + timeChosen.getMinute();
 
         Intent i = getIntent();
+        //get string of the date type the user is choosing for
         String which = i.getStringExtra("forWhatDate");
         //create bundle which will be returned to addingTask/editTask activity
         Bundle returnInfo = new Bundle();
