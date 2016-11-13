@@ -48,11 +48,6 @@ public class databaseManager extends SQLiteOpenHelper {
         return this;
     }
 
-//    public void close()
-//    {
-//        this.close();
-//    }
-
     public databaseManager read()
     {
         db=this.getReadableDatabase();
@@ -72,9 +67,12 @@ public class databaseManager extends SQLiteOpenHelper {
 
     }
 
+    public void deleteTask(long rowID){
+        db.delete(taskTableName,"_id" + "=" + rowID,null);
+    }
+
     public Cursor readTasks()
     {
-        //db=this.getReadableDatabase();
         return   db.query(taskTableName,new String[]{
                 "_id",
                 "taskTitle",
