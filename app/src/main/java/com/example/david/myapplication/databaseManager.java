@@ -19,6 +19,7 @@ public class databaseManager extends SQLiteOpenHelper {
     private static final int dbVersion=1;
     private static final String dbName="ToDoDB";
     private static final String taskTableName="task";
+    private static final String listTableName="list";
 
     private static SQLiteDatabase db;
 
@@ -32,6 +33,12 @@ public class databaseManager extends SQLiteOpenHelper {
             "dueDate text" +
             ");";
 
+    String createListTable = "Create Table " + listTableName +"(" +
+            "_id integer primary key autoincrement," +
+            "listTitle text," +
+            "listDescription text"+
+            ");";
+
     public databaseManager(Context context) {
         super(context, dbName, null, dbVersion);
     }
@@ -39,6 +46,7 @@ public class databaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //create table called task
         db.execSQL(createTaskTable);
+        db.execSQL(createListTable);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -69,10 +77,24 @@ public class databaseManager extends SQLiteOpenHelper {
         newInsert.put("startDate",newTask.getStartDate());
         newInsert.put("dueDate",newTask.getDueDate());
 
-        //inswrt new values into db
+        //insert new values into db
         db.insert(taskTableName,null,newInsert);
 
-        requery();
+        requeryTask();
+
+    }
+
+    //insert new list
+    public void addList(List newList){
+        //puts user input into content values
+        ContentValues newInsert = new ContentValues();
+        newInsert.put("listTitle",newList.getListTitle());
+        newInsert.put("listDescription",newList.getListDescription());
+
+        //insert new values into db
+        db.insert(listTableName,null,newInsert);
+
+        //requery();
 
     }
 
@@ -88,14 +110,35 @@ public class databaseManager extends SQLiteOpenHelper {
 
         //update row
         boolean updated=db.update(taskTableName,update,"_id" + "=" + id,null)>0;
-        requery();
+        requeryTask();
+        return updated;
+    }
+
+    //updates a selected list row
+    public boolean updateList(List updatedList,long id){
+        //puts user input into content values
+        ContentValues update = new ContentValues();
+        update.put("listTitle",updatedList.getListTitle());
+        update.put("listDescription",updatedList.getListDescription());
+
+
+        //update row
+        boolean updated=db.update(listTableName,update,"_id" + "=" + id,null)>0;
+        //requery();
         return updated;
     }
 
     //delete a task chosen by the user
     public boolean  deleteTask(long rowID){
         boolean deleted =db.delete(taskTableName,"_id" + "=" + rowID,null)>0;
-        requery();
+        requeryTask();
+        return deleted;
+    }
+
+    //delete a list chosen by the user
+    public boolean  deleteList(long rowID){
+        boolean deleted =db.delete(listTableName,"_id" + "=" + rowID,null)>0;
+        //requery();
         return deleted;
     }
 
@@ -109,6 +152,18 @@ public class databaseManager extends SQLiteOpenHelper {
                 "listID",
                 "startDate",
                 "dueDate"
+        },null,null,null,null,null);
+
+
+    }
+
+    //returns a cursor of all rows
+    public Cursor readLists()
+    {
+        return   db.query(listTableName,new String[]{
+                "_id",
+                "listTitle",
+                "listDescription"
         },null,null,null,null,null);
 
 
@@ -128,15 +183,39 @@ public class databaseManager extends SQLiteOpenHelper {
 
     }
 
+    //returns cursor of chosen row
+    public Cursor readList(long rowID) {
+        return   db.query(taskTableName,new String[]{
+                "_id",
+                "listTitle",
+                "listDescription"
+        },"_id" + "=" +rowID,null,null,null,null);
+
+
+    }
+
 
     //updates and notifies the cursor adapter of a change in the db
-    public void requery() {
+    public void requeryTask() {
 
         this.open();
         //updates cursor
         MainActivity.c = this.readTasks();
         //notifies adapter of update
         MainActivity.adapt.changeCursor(MainActivity.c);
+
+        this.close();
+
+    }
+
+    //updates and notifies the cursor adapter of a change in the db
+    public void requeryList() {
+
+        this.open();
+        //updates cursor
+        MainActivity.c = this.readLists();
+        //notifies adapter of update
+        //MainActivity.adapt.changeCursor(MainActivity.c);
 
         this.close();
 

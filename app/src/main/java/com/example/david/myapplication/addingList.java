@@ -15,11 +15,16 @@ import android.widget.Toast;
 //will be used to create new list
 public class addingList extends Activity {
 
+    EditText listTitle;
+    EditText listDescription;
 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addinglist);
+
+        listTitle=(EditText)findViewById(R.id.listTitleEdit);
+        listDescription=(EditText)findViewById(R.id.listDescriptionEdit);
 
 
     }
@@ -29,6 +34,13 @@ public class addingList extends Activity {
     public void complete(View V)
     {
         Toast.makeText(this,"Testing!",Toast.LENGTH_SHORT).show();
+
+        List newList = new List(listTitle.getText().toString(),listDescription.getText().toString());
+
+        databaseManager dbm = new databaseManager(this);
+        dbm.open();
+        dbm.addList(newList);
+        dbm.close();
 
         finish();
     }
