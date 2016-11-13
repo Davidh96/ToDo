@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:2:1-23:12
+ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:2:1-26:12
 	package
 		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:3:5-46
 		INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:2:1-23:12
 		INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml
 		INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml
 application
-ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:5:5-21:19
+ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:5:5-24:19
 MERGED from [com.android.support:appcompat-v7:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:25:5-20
@@ -52,6 +52,10 @@ activity#com.example.david.myapplication.addingTask
 ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:18:9-20:20
 	android:name
 		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:18:19-45
+activity#com.example.david.myapplication.editTask
+ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:21:9-23:20
+	android:name
+		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:21:19-43
 uses-sdk
 INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/AndroidManifest.xml:21:5-23:78
