@@ -131,6 +131,7 @@ public class editTask extends Activity {
             Bundle returnInfo = data.getExtras();
             //gets the date from the bundle
             chosenDate=returnInfo.getString("dateChosen");
+            chosenDate =chosenDate + " " + returnInfo.getString("timeChosen");
         }
     }
 }
