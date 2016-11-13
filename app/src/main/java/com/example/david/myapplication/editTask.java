@@ -55,10 +55,10 @@ public class editTask extends Activity {
         databaseManager database = new databaseManager(this);
         database.open();
         //grab infromation from user input
-//        Task newTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), 0,
-//                startBox.getText().toString(), endBox.getText().toString());
-//        //insert into database
-//        database.addTask(newTask);
+        Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), 0,
+                startBox.getText().toString(), endBox.getText().toString());
+        //iupdate row in db
+        database.updateTask(updateTask,id);
 
         database.close();
 
@@ -66,14 +66,16 @@ public class editTask extends Activity {
         finish();
     }
 
+    //retrieves data from the db and places into the correct fields so user can edit them
     private void retrieveData(){
+        //will hold selected information
         String data="";
+
         databaseManager dbm = new databaseManager(this);
         dbm.open();
-        Cursor c = dbm.readTask(id);
-        if(c!=null) {
 
-        }
+        //retrieve data from row
+        Cursor c = dbm.readTask(id);
 
         if (c.moveToFirst()){
             do{

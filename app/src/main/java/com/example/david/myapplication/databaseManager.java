@@ -61,7 +61,7 @@ public class databaseManager extends SQLiteOpenHelper {
 
     //insert new task
     public void addTask(Task newTask){
-        //puts user input into contentvalues
+        //puts user input into content values
         ContentValues newInsert = new ContentValues();
         newInsert.put("taskTitle",newTask.getTaskTitle());
         newInsert.put("taskDescription",newTask.getTaskDescription());
@@ -69,11 +69,27 @@ public class databaseManager extends SQLiteOpenHelper {
         newInsert.put("startDate",newTask.getStartDate());
         newInsert.put("dueDate",newTask.getDueDate());
 
-        //insrt new values into db
+        //inswrt new values into db
         db.insert(taskTableName,null,newInsert);
 
         requery();
 
+    }
+
+    //updates a selected task row
+    public boolean updateTask(Task updatedTask,long id){
+        //puts user input into content values
+        ContentValues update = new ContentValues();
+        update.put("taskTitle",updatedTask.getTaskTitle());
+        update.put("taskDescription",updatedTask.getTaskDescription());
+        update.put("listID",updatedTask.getListID());
+        update.put("startDate",updatedTask.getStartDate());
+        update.put("dueDate",updatedTask.getDueDate());
+
+        //update row
+        boolean updated=db.update(taskTableName,update,"_id" + "=" + id,null)>0;
+        requery();
+        return updated;
     }
 
     //delete a task chosen by the user
@@ -99,8 +115,7 @@ public class databaseManager extends SQLiteOpenHelper {
     }
 
     //returns cursor of chosen row
-    public Cursor readTask(long rowID)
-    {
+    public Cursor readTask(long rowID) {
         return   db.query(taskTableName,new String[]{
                 "_id",
                 "taskTitle",
@@ -113,9 +128,9 @@ public class databaseManager extends SQLiteOpenHelper {
 
     }
 
+
     //updates and notifies the cursor adapter of a change in the db
-    public void requery()
-    {
+    public void requery() {
 
         this.open();
         //updates cursor
