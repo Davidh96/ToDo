@@ -25,4 +25,13 @@ public class addingList extends Activity {
     }
 
 
+    //is called when user clicks 'done' button
+    public void complete(View V)
+    {
+        Toast.makeText(this,"Testing!",Toast.LENGTH_SHORT).show();
+
+        finish();
+    }
+
+
 }
