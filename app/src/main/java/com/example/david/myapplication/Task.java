@@ -4,6 +4,7 @@ package com.example.david.myapplication;
  * Created by David on 12/11/2016.
  */
 
+//is used to hold data on a task
 public class Task {
 
     private int _id;

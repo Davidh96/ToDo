@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 public class databaseManager extends SQLiteOpenHelper {
 
+    //database information
     private static final int dbVersion=1;
     private static final String dbName="ToDoDB";
     private static final String taskTableName="task";
@@ -35,6 +37,7 @@ public class databaseManager extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
+        //create table called task
         db.execSQL(createTaskTable);
     }
 
@@ -44,17 +47,21 @@ public class databaseManager extends SQLiteOpenHelper {
 
     public databaseManager open()
     {
+        //open up db for writing to
         db=this.getWritableDatabase();
         return this;
     }
 
     public databaseManager read()
     {
+        //opens up db for reading from
         db=this.getReadableDatabase();
         return this;
     }
 
+    //insert new task
     public void addTask(Task newTask){
+        //puts user input into contentvalues
         ContentValues newInsert = new ContentValues();
         newInsert.put("taskTitle",newTask.getTaskTitle());
         newInsert.put("taskDescription",newTask.getTaskDescription());
@@ -62,15 +69,21 @@ public class databaseManager extends SQLiteOpenHelper {
         newInsert.put("startDate",newTask.getStartDate());
         newInsert.put("dueDate",newTask.getDueDate());
 
+        //insrt new values into db
         db.insert(taskTableName,null,newInsert);
 
+        requery();
 
     }
 
-    public void deleteTask(long rowID){
-        db.delete(taskTableName,"_id" + "=" + rowID,null);
+    //delete a task chosen by the user
+    public boolean  deleteTask(long rowID){
+        boolean deleted =db.delete(taskTableName,"_id" + "=" + rowID,null)>0;
+        requery();
+        return deleted;
     }
 
+    //returns a cursor of all rows
     public Cursor readTasks()
     {
         return   db.query(taskTableName,new String[]{
@@ -82,6 +95,35 @@ public class databaseManager extends SQLiteOpenHelper {
                 "dueDate"
         },null,null,null,null,null);
 
+
+    }
+
+    //returns cursor of chosen row
+    public Cursor readTask(long rowID)
+    {
+        return   db.query(taskTableName,new String[]{
+                "_id",
+                "taskTitle",
+                "taskDescription",
+                "listID",
+                "startDate",
+                "dueDate"
+        },"_id" + "=" +rowID,null,null,null,null);
+
+
+    }
+
+    //updates and notifies the cursor adapter of a change in the db
+    public void requery()
+    {
+
+        this.open();
+        //updates cursor
+        MainActivity.c = this.readTasks();
+        //notifies adapter of update
+        MainActivity.adapt.changeCursor(MainActivity.c);
+
+        this.close();
 
     }
 
