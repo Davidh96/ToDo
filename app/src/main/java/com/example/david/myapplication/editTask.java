@@ -40,7 +40,6 @@ public class editTask extends Activity {
         titleBox=(EditText)findViewById((R.id.taskTitleEdit));
         descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
         listBox=(EditText)findViewById((R.id.listIDEdit));
-        startBox=(EditText)findViewById((R.id.startDateEdit));
         endBox=(EditText)findViewById((R.id.endDateEdit));
 
         startDate=(DatePicker)findViewById(R.id.datePicker);
@@ -51,7 +50,7 @@ public class editTask extends Activity {
 
 
 
-        retrieveData();;
+        retrieveData();
 
 
     }
@@ -100,8 +99,8 @@ public class editTask extends Activity {
                 data = c.getString(c.getColumnIndex("listID"));
                 listBox.setText(data);
 
-                data = c.getString(c.getColumnIndex("startDate"));
-                startBox.setText(data);
+//                data = c.getString(c.getColumnIndex("startDate"));
+//                startBox.setText(data);
 
                 data = c.getString(c.getColumnIndex("dueDate"));
                 endBox.setText(data);
