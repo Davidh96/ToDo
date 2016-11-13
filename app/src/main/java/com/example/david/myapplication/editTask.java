@@ -22,7 +22,6 @@ public class editTask extends Activity {
     EditText titleBox;
     EditText descriptionBox;
     EditText listBox;
-    EditText endBox;
 
 
     public String chosenDate;
@@ -42,7 +41,6 @@ public class editTask extends Activity {
         titleBox=(EditText)findViewById((R.id.taskTitleEdit));
         descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
         listBox=(EditText)findViewById((R.id.listIDEdit));
-        endBox=(EditText)findViewById((R.id.endDateEdit));
 
         startDate=(DatePicker)findViewById(R.id.datePicker);
 
@@ -66,7 +64,7 @@ public class editTask extends Activity {
         database.open();
         //grab infromation from user input
         Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), 0,
-             chosenDate , endBox.getText().toString());
+             chosenDate , "");
         //iupdate row in db
         database.updateTask(updateTask,id);
 
@@ -98,8 +96,6 @@ public class editTask extends Activity {
                 data = c.getString(c.getColumnIndex("listID"));
                 listBox.setText(data);
 
-                data = c.getString(c.getColumnIndex("dueDate"));
-                endBox.setText(data);
 
             }while(c.moveToNext());
         }

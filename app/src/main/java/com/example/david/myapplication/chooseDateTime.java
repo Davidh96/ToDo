@@ -26,6 +26,8 @@ public class chooseDateTime extends Activity{
         timeChosen=(TimePicker)findViewById(R.id.timePicker);
 
 
+
+
     }
 
     public void completeDateTime(View v) {
@@ -33,16 +35,18 @@ public class chooseDateTime extends Activity{
         String chosenTimeString =   timeChosen.getHour() + ":" + (timeChosen.getMinute());
 
         Intent i = getIntent();
+        String which = i.getStringExtra("forWhatDate");
         //create bundle which will be returned to addingTask/editTask activity
         Bundle returnInfo = new Bundle();
         //create key/value pair for the date
+        returnInfo.putString("whichDate",which);
         returnInfo.putString("dateChosen",chosenDateString);
         returnInfo.putString("timeChosen",chosenTimeString);
         i.putExtras(returnInfo);
         //retrun ok result code
         setResult(RESULT_OK,i);
 
-        Toast.makeText(this,chosenDateString , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,which , Toast.LENGTH_SHORT).show();
         finish();
 
     }
