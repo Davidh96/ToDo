@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,9 @@ public class editTask extends Activity {
     EditText listBox;
     EditText startBox;
     EditText endBox;
+
+    DatePicker startDate;
+
     long id;
 
 
@@ -38,6 +43,8 @@ public class editTask extends Activity {
         startBox=(EditText)findViewById((R.id.startDateEdit));
         endBox=(EditText)findViewById((R.id.endDateEdit));
 
+        startDate=(DatePicker)findViewById(R.id.datePicker);
+
         Intent i = getIntent();
 
         id= i.getLongExtra("id",-1);
@@ -49,14 +56,19 @@ public class editTask extends Activity {
 
     }
 
+    //String.valueOf(startDate.getDate())
+
     //is run when a user clicks the 'done' button
     public void complete(View v)
     {
+        //get the date chosen by the user
+        String chosenDate =   startDate.getYear() + "-" + (startDate.getMonth()+1) + "-" + startDate.getDayOfMonth();
+
         databaseManager database = new databaseManager(this);
         database.open();
         //grab infromation from user input
         Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), 0,
-                startBox.getText().toString(), endBox.getText().toString());
+             chosenDate , endBox.getText().toString());
         //iupdate row in db
         database.updateTask(updateTask,id);
 
