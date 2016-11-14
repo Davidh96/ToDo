@@ -26,6 +26,8 @@ public class taskListView extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklistview);
+
+
         //information I want to retriev from the db
         String[] columns = new String[]{"listTitle"};
         //where i want to dsiplay the informtion

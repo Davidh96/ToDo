@@ -40,7 +40,7 @@ public class editTask extends Activity {
 
         titleBox=(EditText)findViewById((R.id.taskTitleEdit));
         descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
-        listBox=(EditText)findViewById((R.id.listIDEdit));
+//        listBox=(EditText)findViewById((R.id.listIDEdit));
 
         startDate=(DatePicker)findViewById(R.id.datePicker);
 
