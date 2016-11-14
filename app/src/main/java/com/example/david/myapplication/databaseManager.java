@@ -3,8 +3,10 @@ package com.example.david.myapplication;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -45,8 +47,14 @@ public class databaseManager extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db) {
         //create table called task
-        db.execSQL(createTaskTable);
-        db.execSQL(createListTable);
+        try {
+            db.execSQL(createTaskTable);
+            db.execSQL(createListTable);
+        }
+        catch(SQLException e)
+        {
+            Log.e("Error executing SQL...", e.toString());
+        }
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -81,7 +89,6 @@ public class databaseManager extends SQLiteOpenHelper {
         db.insert(taskTableName,null,newInsert);
 
         requeryTask();
-
     }
 
     //insert new list
