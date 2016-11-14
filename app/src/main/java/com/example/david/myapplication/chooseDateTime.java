@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class chooseDateTime extends Activity{
     public void completeDateTime(View v) {
         String chosenDateString =   dateChosen.getYear() + "-" + (dateChosen.getMonth()+1) + "-" + dateChosen.getDayOfMonth();
         String chosenTimeString =   timeChosen.getHour() + ":" + timeChosen.getMinute();
+
 
         Intent i = getIntent();
         //get string of the date type the user is choosing for

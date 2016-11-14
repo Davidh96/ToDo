@@ -28,6 +28,7 @@ public class editTask extends Activity {
     Spinner listChoice;
 
     Button stDateButton;
+    Button enDateButton;
 
     public String chosenDate;
     int listID;
@@ -49,6 +50,7 @@ public class editTask extends Activity {
         titleBox=(EditText)findViewById((R.id.taskTitleEdit));
         descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
         stDateButton=(Button)findViewById(R.id.startDateEdit);
+
 //
 
         startDate=(DatePicker)findViewById(R.id.datePicker);
@@ -106,10 +108,6 @@ public class editTask extends Activity {
                 descriptionBox.setText(data);
 
                 data = c.getString(c.getColumnIndex("listID"));
-
-                data = c.getString(c.getColumnIndex("startDate"));
-                stDateButton.setText(data);
-
 
 
             }while(c.moveToNext());
