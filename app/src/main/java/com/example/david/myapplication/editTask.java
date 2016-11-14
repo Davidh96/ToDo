@@ -30,7 +30,7 @@ public class editTask extends Activity {
     Button stDateBtn;
     Button enDateBtn;
 
-    public String chosenDate;
+
     int listID;
     DatePicker startDate;
 
@@ -81,7 +81,7 @@ public class editTask extends Activity {
         database.open();
         //grab infromation from user input
         Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), listID,
-             chosenDate , "");
+                chosenStartDate , chosenEndDate);
         //iupdate row in db
         database.updateTask(updateTask,id);
 
@@ -114,8 +114,17 @@ public class editTask extends Activity {
 
 
                 data = c.getString(c.getColumnIndex("startDate"));
+                if(data==null)
+                {
+                    data= "Pick Date";
+                }
                 stDateBtn.setText(data);
+
                 data = c.getString(c.getColumnIndex("dueDate"));
+                if(data==null)
+                {
+                    data= "Pick Date";
+                }
                 enDateBtn.setText(data);
 
 
