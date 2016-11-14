@@ -101,7 +101,7 @@ public class databaseManager extends SQLiteOpenHelper {
         //insert new values into db
         db.insert(listTableName,null,newInsert);
 
-        //requery();
+        requeryList();
 
     }
 
@@ -131,7 +131,7 @@ public class databaseManager extends SQLiteOpenHelper {
 
         //update row
         boolean updated=db.update(listTableName,update,"_id" + "=" + id,null)>0;
-        //requery();
+        requeryList();
         return updated;
     }
 
@@ -145,7 +145,7 @@ public class databaseManager extends SQLiteOpenHelper {
     //delete a list chosen by the user
     public boolean  deleteList(long rowID){
         boolean deleted =db.delete(listTableName,"_id" + "=" + rowID,null)>0;
-        //requery();
+        requeryList();
         return deleted;
     }
 
@@ -220,9 +220,9 @@ public class databaseManager extends SQLiteOpenHelper {
 
         this.open();
         //updates cursor
-        MainActivity.c = this.readLists();
+        taskListView.c = this.readLists();
         //notifies adapter of update
-        //MainActivity.adapt.changeCursor(MainActivity.c);
+        taskListView.adapt.changeCursor(taskListView.c);
 
         this.close();
 

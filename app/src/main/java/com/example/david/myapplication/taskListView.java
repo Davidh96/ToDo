@@ -18,11 +18,26 @@ import android.widget.Toast;
 
 public class taskListView extends ListActivity {
 
+    public static Cursor c;
+    public static SimpleCursorAdapter adapt;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklistview);
+        //information I want to retriev from the db
+        String[] columns = new String[]{"listTitle"};
+        //where i want to dsiplay the informtion
+        int[] to =new int[] {R.id.listTitle1};
 
+        databaseManager dbm = new databaseManager(this);
+        dbm.open();
+        //retrieve cursor of all rows from db
+        c = dbm.readLists();
+        //create adapter which displays task title
+        adapt = new SimpleCursorAdapter(this, R.layout.list_row, c, columns, to,0);
+        //set adapter
+        setListAdapter(adapt);
+        dbm.close();
     }
 
     public void viewTask(View v){
