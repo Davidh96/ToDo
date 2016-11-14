@@ -27,12 +27,15 @@ public class editTask extends Activity {
     EditText descriptionBox;
     Spinner listChoice;
 
-    Button stDateButton;
-    Button enDateButton;
+    Button stDateBtn;
+    Button enDateBtn;
 
     public String chosenDate;
     int listID;
     DatePicker startDate;
+
+    String chosenStartDate;
+    String chosenEndDate;
 
     long id;
 
@@ -49,8 +52,8 @@ public class editTask extends Activity {
 
         titleBox=(EditText)findViewById((R.id.taskTitleEdit));
         descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
-        stDateButton=(Button)findViewById(R.id.startDateEdit);
-
+        stDateBtn=(Button)findViewById(R.id.startDateEdit);
+        enDateBtn=(Button)findViewById(R.id.endDateEdit);
 //
 
         startDate=(DatePicker)findViewById(R.id.datePicker);
@@ -108,6 +111,12 @@ public class editTask extends Activity {
                 descriptionBox.setText(data);
 
                 data = c.getString(c.getColumnIndex("listID"));
+
+
+                data = c.getString(c.getColumnIndex("startDate"));
+                stDateBtn.setText(data);
+                data = c.getString(c.getColumnIndex("dueDate"));
+                enDateBtn.setText(data);
 
 
             }while(c.moveToNext());
@@ -186,11 +195,34 @@ public class editTask extends Activity {
 
         if(resultCode==RESULT_OK)
         {
+//            //places bundle from intent into a new bundle
+//            Bundle returnInfo = data.getExtras();
+//            //gets the date from the bundle
+//            chosenDate=returnInfo.getString("dateChosen");
+//            chosenDate =chosenDate + " " + returnInfo.getString("timeChosen");
+
             //places bundle from intent into a new bundle
             Bundle returnInfo = data.getExtras();
-            //gets the date from the bundle
-            chosenDate=returnInfo.getString("dateChosen");
-            chosenDate =chosenDate + " " + returnInfo.getString("timeChosen");
+            String dateType = returnInfo.getString("whichDate");
+
+            //if the choice is for the start date
+            if(dateType.equals("Start")) {
+                //gets the date from the bundle
+                chosenStartDate = returnInfo.getString("dateChosen");
+                chosenStartDate += " " + returnInfo.getString("timeChosen");
+                Toast.makeText(this,chosenStartDate , Toast.LENGTH_SHORT).show();
+                stDateBtn.setText(chosenStartDate);
+
+            }
+
+            // if the choice is for the due date
+            if(dateType.equals("End")) {
+                //gets the date from the bundle
+                chosenEndDate = returnInfo.getString("dateChosen");
+                chosenEndDate += " " + returnInfo.getString("timeChosen");
+                Toast.makeText(this, chosenEndDate, Toast.LENGTH_SHORT).show();
+                enDateBtn.setText(chosenEndDate);
+            }
         }
     }
 }
