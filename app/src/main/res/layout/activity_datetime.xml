@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -9,9 +10,11 @@
 
     <!--ref:https://developer.android.com/reference/android/widget/DatePicker.html#getMonth()-->
     <DatePicker
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/datePicker" />
+        android:id="@+id/datePicker"
+        android:scaleX="1.16"
+        android:scaleY="1.2"/>
 
     <TimePicker
         android:layout_width="match_parent"
@@ -19,9 +22,15 @@
         android:id="@+id/timePicker"></TimePicker>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="complete"
         android:onClick="completeDateTime"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:onClick="cancelDateTime"/>
 </LinearLayout>
 </ScrollView>

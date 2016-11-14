@@ -220,6 +220,10 @@ public class editTask extends Activity {
                 chosenStartDate = returnInfo.getString("dateChosen");
                 chosenStartDate += " " + returnInfo.getString("timeChosen");
                 Toast.makeText(this,chosenStartDate , Toast.LENGTH_SHORT).show();
+                if(chosenStartDate.equals("null null"))
+                {
+                    chosenStartDate="Pick Date";
+                }
                 stDateBtn.setText(chosenStartDate);
 
             }
@@ -230,6 +234,10 @@ public class editTask extends Activity {
                 chosenEndDate = returnInfo.getString("dateChosen");
                 chosenEndDate += " " + returnInfo.getString("timeChosen");
                 Toast.makeText(this, chosenEndDate, Toast.LENGTH_SHORT).show();
+                if(chosenEndDate.equals("null null"))
+                {
+                    chosenEndDate="Pick Date";
+                }
                 enDateBtn.setText(chosenEndDate);
             }
         }

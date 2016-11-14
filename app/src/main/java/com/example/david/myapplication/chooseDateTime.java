@@ -53,4 +53,24 @@ public class chooseDateTime extends Activity{
         finish();
 
     }
+
+    public void cancelDateTime(View v)
+    {
+
+        Intent i = getIntent();
+        //get string of the date type the user is choosing for
+        String which = i.getStringExtra("forWhatDate");
+        //create bundle which will be returned to addingTask/editTask activity
+        Bundle returnInfo = new Bundle();
+        //create key/value pair for the date
+        returnInfo.putString("whichDate",which);
+        returnInfo.putString("dateChosen",null);
+        returnInfo.putString("timeChosen",null);
+        i.putExtras(returnInfo);
+        //retrun ok result code
+        setResult(RESULT_OK,i);
+
+        //Toast.makeText(this,which , Toast.LENGTH_SHORT).show();
+        finish();
+    }
 }
