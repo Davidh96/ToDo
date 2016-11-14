@@ -145,7 +145,9 @@ public class databaseManager extends SQLiteOpenHelper {
     //delete a list chosen by the user
     public boolean  deleteList(long rowID){
         boolean deleted =db.delete(listTableName,"_id" + "=" + rowID,null)>0;
+        db.delete(taskTableName,"listID" + "=" + rowID,null);
         requeryList();
+        requeryTask();
         return deleted;
     }
 
