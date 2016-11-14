@@ -1,20 +1,24 @@
 package com.example.david.myapplication;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 /**
  * Created by david on 14/11/16.
  */
 
-public class editList extends Activity {
+public class editList extends ListActivity {
 
 
     EditText listTitle;
@@ -35,12 +39,43 @@ public class editList extends Activity {
 
         id= i.getLongExtra("id",-1);
 
-
-
         retrieveData();
 
+        //information I want to retriev from the db
+        String[] columns = new String[]{"taskTitle"};
+        //where i want to dsiplay the informtion
+        int[] to =new int[] {R.id.taskTitle1};
+
+        databaseManager dbm = new databaseManager(this);
+        dbm.open();
+        //retrieve cursor of all rows from db
+        Cursor c = dbm.readListTasks(id);
+        //c.close();
+        //create adapter which displays task title
+        SimpleCursorAdapter adapt = new SimpleCursorAdapter(this, R.layout.task_row, c, columns, to,0);
+        //set adapter
+        setListAdapter(adapt);
+        dbm.close();
+
+        //populateList();
+
+        ListView lv = (ListView)findViewById(android.R.id.list);
+
+        //open up screen to allow user to edit task
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+
+                Intent editTask = new Intent(editList.this,editTask.class);
+                //editTask.putExtra("id",id);
+                Toast.makeText(editList.this, "" + id, Toast.LENGTH_SHORT).show();
+                editTask.putExtra("id",id);
+                startActivity(editTask);
+            }
+        });
 
     }
+
 
 
     //is run when a user clicks the 'done' button

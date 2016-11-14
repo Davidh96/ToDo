@@ -165,6 +165,21 @@ public class databaseManager extends SQLiteOpenHelper {
     }
 
     //returns a cursor of all rows
+    public Cursor readListTasks(long listid)
+    {
+        return   db.query(taskTableName,new String[]{
+                "_id",
+                "taskTitle",
+                "taskDescription",
+                "listID",
+                "startDate",
+                "dueDate"
+        },"listID" + "=" + listid,null,null,null,null);
+
+
+    }
+
+    //returns a cursor of all rows
     public Cursor readLists()
     {
         return   db.query(listTableName,new String[]{

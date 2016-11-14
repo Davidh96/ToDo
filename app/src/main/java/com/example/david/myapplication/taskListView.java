@@ -73,6 +73,7 @@ public class taskListView extends ListActivity {
                 dbm.close();
 
                 return true;
+
             }
         });
     }
