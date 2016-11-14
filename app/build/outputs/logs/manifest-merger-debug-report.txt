@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:2:1-35:12
+ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:2:1-38:12
 	package
 		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:3:5-46
 		INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:2:1-35:12
 		INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml
 		INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml
 application
-ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:5:5-33:19
+ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:5:5-36:19
 MERGED from [com.android.support:appcompat-v7:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:25:5-20
@@ -60,14 +60,18 @@ activity#com.example.david.myapplication.editTask
 ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:24:9-26:20
 	android:name
 		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:24:19-43
-activity#com.example.david.myapplication.chooseDateTime
+activity#com.example.david.myapplication.editList
 ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:27:9-29:20
 	android:name
-		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:27:19-49
-activity#com.example.david.myapplication.taskListView
+		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:27:19-43
+activity#com.example.david.myapplication.chooseDateTime
 ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:30:9-32:20
 	android:name
-		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:30:19-47
+		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:30:19-49
+activity#com.example.david.myapplication.taskListView
+ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:33:9-35:20
+	android:name
+		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:33:19-47
 uses-sdk
 INJECTED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/AndroidManifest.xml:21:5-23:78

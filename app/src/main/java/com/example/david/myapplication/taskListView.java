@@ -43,18 +43,18 @@ public class taskListView extends ListActivity {
 
         ListView lv = (ListView)findViewById(android.R.id.list);
 
-//        //open up screen to allow user to edit task
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView parent, View view, int position, long id) {
-//
-//                Intent editTask = new Intent(this,editTask.class);
-//                //editTask.putExtra("id",id);
-//                Toast.makeText(MainActivity.this, "" + id, Toast.LENGTH_SHORT).show();
-//                editTask.putExtra("id",id);
-//                startActivity(editTask);
-//            }
-//        });
+        //open up screen to allow user to edit task
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+
+                Intent editList = new Intent(taskListView.this,editList.class);
+                //editTask.putExtra("id",id);
+                Toast.makeText(taskListView.this, "" + id, Toast.LENGTH_SHORT).show();
+                editList.putExtra("id",id);
+                startActivity(editList);
+            }
+        });
 
         //long press to delete list
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -66,7 +66,7 @@ public class taskListView extends ListActivity {
                 dbm.open();
                 boolean deleted = dbm.deleteList((id));
                 if(deleted==true) {
-                    Toast.makeText(taskListView.this, "Deleted Task", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(taskListView.this, "Deleted List", Toast.LENGTH_SHORT).show();
                 }
                 dbm.close();
 

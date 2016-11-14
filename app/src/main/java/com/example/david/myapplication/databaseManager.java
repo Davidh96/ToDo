@@ -192,7 +192,7 @@ public class databaseManager extends SQLiteOpenHelper {
 
     //returns cursor of chosen row
     public Cursor readList(long rowID) {
-        return   db.query(taskTableName,new String[]{
+        return   db.query(listTableName,new String[]{
                 "_id",
                 "listTitle",
                 "listDescription"
