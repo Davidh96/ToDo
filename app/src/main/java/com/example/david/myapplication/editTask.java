@@ -27,6 +27,7 @@ public class editTask extends Activity {
     EditText descriptionBox;
     Spinner listChoice;
 
+    Button stDateButton;
 
     public String chosenDate;
     int listID;
@@ -47,6 +48,7 @@ public class editTask extends Activity {
 
         titleBox=(EditText)findViewById((R.id.taskTitleEdit));
         descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
+        stDateButton=(Button)findViewById(R.id.startDateEdit);
 //
 
         startDate=(DatePicker)findViewById(R.id.datePicker);
@@ -103,6 +105,12 @@ public class editTask extends Activity {
                 data = c.getString(c.getColumnIndex("taskDescription"));
                 descriptionBox.setText(data);
 
+                data = c.getString(c.getColumnIndex("listID"));
+
+                data = c.getString(c.getColumnIndex("startDate"));
+                stDateButton.setText(data);
+
+
 
             }while(c.moveToNext());
         }
@@ -149,10 +157,24 @@ public class editTask extends Activity {
     }
 
 
-    public void chooseDate(View v)
+    public void chooseStartDate(View v)
     {
 
         Intent chooseDate = new Intent(this,chooseDateTime.class);
+        //the user is choosing the start date
+        chooseDate.putExtra("forWhatDate","Start");
+
+        //ref https://developer.android.com/reference/android/app/Activity.html#startActivityForResult(android.content.Intent,%20int,%20android.os.Bundle)
+        startActivityForResult(chooseDate,0);
+
+    }
+
+    public void chooseEndDate(View v)
+    {
+
+        Intent chooseDate = new Intent(this,chooseDateTime.class);
+        //the user is choosing the end date
+        chooseDate.putExtra("forWhatDate","End");
 
         //ref https://developer.android.com/reference/android/app/Activity.html#startActivityForResult(android.content.Intent,%20int,%20android.os.Bundle)
         startActivityForResult(chooseDate,0);
