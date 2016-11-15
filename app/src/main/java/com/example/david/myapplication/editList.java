@@ -44,7 +44,7 @@ public class editList extends ListActivity {
         //information I want to retriev from the db
         String[] columns = new String[]{"taskTitle"};
         //where i want to dsiplay the informtion
-        int[] to =new int[] {R.id.taskTitle1};
+        int[] to =new int[] {R.id.taskTitle};
 
         databaseManager dbm = new databaseManager(this);
         dbm.open();
