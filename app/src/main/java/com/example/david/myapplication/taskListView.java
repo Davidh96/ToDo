@@ -1,7 +1,9 @@
 package com.example.david.myapplication;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -58,19 +60,42 @@ public class taskListView extends ListActivity {
             }
         });
 
+        //ref https://stackoverflow.com/questions/2115758/how-do-i-display-an-alert-dialog-on-android
+        //ref https://developer.android.com/reference/android/app/AlertDialog.html
+        //ref https://developer.android.com/guide/topics/ui/dialogs.html
         //long press to delete list
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long id) {
+                                           int pos, long _id) {
                 // TODO Auto-generated method stub
+                final long id=_id;
 
-                dbm.open();
-                boolean deleted = dbm.deleteList((id));
-                if(deleted==true) {
-                    Toast.makeText(taskListView.this, "Deleted List", Toast.LENGTH_SHORT).show();
-                }
-                dbm.close();
+                //create alert box
+                AlertDialog.Builder alert = new AlertDialog.Builder(taskListView.this);
+                        //alert title
+                        alert.setTitle("Are you sure?")
+                        .setMessage("By deleting this list you will lose all of the tasks contained in it")
+                                //if user clicks yes
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Delete list
+                                dbm.open();
+                                boolean deleted = dbm.deleteList((id));
+                                if(deleted==true) {
+                                    Toast.makeText(taskListView.this, "Deleted List", Toast.LENGTH_SHORT).show();
+                                }
+                                dbm.close();
+                            }
+                        })
+                                //if user clicks cancel
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Do not delete list
+                                Toast.makeText(taskListView.this, "Deletion Canceled", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .show();
 
                 return true;
 
