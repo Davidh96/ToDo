@@ -26,9 +26,6 @@ public class addingList extends Activity {
         listTitle=(EditText)findViewById(R.id.listTitleEdit);
         listDescription=(EditText)findViewById(R.id.listDescriptionEdit);
 
-
-
-
     }
 
 
