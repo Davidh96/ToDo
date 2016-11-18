@@ -48,20 +48,26 @@ public class addingTask extends taskEditor {
     //is run when a user clicks the 'done' button
     public void complete(View v)
     {
-        databaseManager database = new databaseManager(this);
-        database.open();
 
-        //grab infromation from user input
-        newTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), (int)listID,
-                chosenStartDate , chosenEndDate);
+        if(!titleBox.getText().toString().equals("")) {
+            databaseManager database = new databaseManager(this);
+            database.open();
 
-        //insert into database
-        database.addTask(newTask);
+            //grab infromation from user input
+            newTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), (int) listID,
+                    chosenStartDate, chosenEndDate);
 
-        database.close();
+            //insert into database
+            database.addTask(newTask);
 
-        //return to main activity
-        finish();
+            database.close();
+
+            //return to main activity
+            finish();
+        }
+        else{
+            noTitleAlert();
+        }
     }
 
 }

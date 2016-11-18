@@ -81,9 +81,6 @@ public class editList extends ListActivity {
     //is run when a user clicks the 'done' button
     public void complete(View v)
     {
-
-        Toast.makeText(this,"Testing!",Toast.LENGTH_SHORT).show();
-
         List newList = new List(listTitle.getText().toString(),listDescription.getText().toString());
 
         databaseManager dbm = new databaseManager(this);

@@ -1,6 +1,8 @@
 package com.example.david.myapplication;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -40,6 +42,11 @@ public class taskEditor extends Activity {
 
     ArrayList<String> lists= new ArrayList<String>();
     ArrayList<String> listItemID= new ArrayList<String>();
+
+    public void cancelCreation(View v)
+    {
+        finish();
+    }
 
     //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
     public void populateListChoice()
@@ -118,6 +125,7 @@ public class taskEditor extends Activity {
                 chosenStartDate = returnInfo.getString("dateChosen");
                 chosenStartDate += " " + returnInfo.getString("timeChosen");
                 Toast.makeText(this,chosenStartDate , Toast.LENGTH_SHORT).show();
+                //if user canceled selection
                 if(chosenStartDate.equals("null null"))
                 {
                     chosenStartDate=null;
@@ -135,6 +143,7 @@ public class taskEditor extends Activity {
                 chosenEndDate = returnInfo.getString("dateChosen");
                 chosenEndDate += " " + returnInfo.getString("timeChosen");
                 Toast.makeText(this, chosenEndDate, Toast.LENGTH_SHORT).show();
+                //if user canceled selection
                 if(chosenEndDate.equals("null null"))
                 {
                     chosenEndDate=null;
@@ -145,5 +154,24 @@ public class taskEditor extends Activity {
                 }
             }
         }
+    }
+
+    public void noTitleAlert()
+    {
+        //create alert box
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        //alert title
+        alert.setTitle("Eh-hem, forget something?")
+                //alert message
+                .setMessage("You MUST enter a Task Name")
+                //if user clicks yes
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+
+                })
+                .show();
     }
 }

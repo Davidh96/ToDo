@@ -57,19 +57,23 @@ public class editTask extends taskEditor {
     //is run when a user clicks the 'done' button
     public void complete(View v)
     {
+        if(!titleBox.getText().toString().equals("")) {
+            databaseManager database = new databaseManager(this);
+            database.open();
+            //grab infromation from user input
+            Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), listID,
+                    chosenStartDate, chosenEndDate);
+            //iupdate row in db
+            database.updateTask(updateTask, id);
 
-        databaseManager database = new databaseManager(this);
-        database.open();
-        //grab infromation from user input
-        Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), listID,
-                chosenStartDate , chosenEndDate);
-        //iupdate row in db
-        database.updateTask(updateTask,id);
+            database.close();
 
-        database.close();
-
-        //return to main activity
-        finish();
+            //return to main activity
+            finish();
+        }
+        else{
+            noTitleAlert();
+        }
     }
 
     //retrieves data from the db and places into the correct fields so user can edit them

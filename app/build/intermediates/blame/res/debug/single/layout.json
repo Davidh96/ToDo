@@ -116,12 +116,12 @@
         "source": "/home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_search_view.xml"
     },
     {
-        "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_action_mode_bar.xml"
-    },
-    {
         "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
         "source": "/home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_action_mode_bar.xml"
     },
     {
         "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",

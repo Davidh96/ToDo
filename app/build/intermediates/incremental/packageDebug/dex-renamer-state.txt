@@ -1,4 +1,4 @@
-#Fri Nov 18 09:53:39 GMT 2016
+#Fri Nov 18 19:11:27 GMT 2016
 base.0=/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_96bbf5695dd49d38365d5db85844bce95e7d081e
 renamed.1=classes.dex
 renamed.0=classes2.dex

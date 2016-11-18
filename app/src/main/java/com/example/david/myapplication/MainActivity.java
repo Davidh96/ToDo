@@ -97,45 +97,22 @@ public class MainActivity extends ListActivity {
             }
         });
 
-        //ref https://stackoverflow.com/questions/2115758/how-do-i-display-an-alert-dialog-on-android
-        //ref https://developer.android.com/reference/android/app/AlertDialog.html
-        //ref https://developer.android.com/guide/topics/ui/dialogs.html
+
         //long press to delete task
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long _id) {
+                                           int pos, long id) {
                 // TODO Auto-generated method stub
 
+                // delete task
+                dbm.open();
+                boolean deleted = dbm.deleteTask((id));
+                if(deleted==true) {
+                    Toast.makeText(MainActivity.this, "Deleted Task", Toast.LENGTH_SHORT).show();
+                }
+                dbm.close();
 
-                final long id=_id;
-
-                //create alert box
-                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                //alert title
-                alert.setTitle("Are you sure?")
-                        //alert message
-                        .setMessage("You will not be able to retrieve task once it has been deleted")
-                        //if user clicks yes
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // delete task
-                                dbm.open();
-                                boolean deleted = dbm.deleteTask((id));
-                                if(deleted==true) {
-                                    Toast.makeText(MainActivity.this, "Deleted Task", Toast.LENGTH_SHORT).show();
-                                }
-                                dbm.close();
-                            }
-                        })
-                        //if user clicks yes
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do not delete task
-                                Toast.makeText(MainActivity.this, "Deletion Canceled", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .show();
 
                 return true;
             }
