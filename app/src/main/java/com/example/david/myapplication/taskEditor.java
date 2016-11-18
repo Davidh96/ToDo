@@ -43,6 +43,81 @@ public class taskEditor extends Activity {
     ArrayList<String> lists= new ArrayList<String>();
     ArrayList<String> listItemID= new ArrayList<String>();
 
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_addingtask);
+
+        completeButton=(Button)findViewById(R.id.completeButton);
+
+        titleBox=(EditText)findViewById((R.id.taskTitleEdit));
+        descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
+        stDateBtn=(Button)findViewById(R.id.startDateEdit);
+        enDateBtn=(Button)findViewById(R.id.endDateEdit);
+
+
+        startDate=(DatePicker)findViewById(R.id.datePicker);
+
+        listChoice = (Spinner)findViewById(R.id.listChoice);
+
+        Intent i = getIntent();
+
+        id= i.getLongExtra("id",-1);
+
+
+        populateListChoice();
+        retrieveData();
+
+
+
+    }
+
+    //retrieves data from the db and places into the correct fields so user can edit them
+    private void retrieveData(){
+        //will hold selected information
+        String data="";
+
+        databaseManager dbm = new databaseManager(this);
+        dbm.open();
+
+        //retrieve data from row
+        Cursor c = dbm.readTask(id);
+
+        if (c.moveToFirst()){
+            do{
+                data = c.getString(c.getColumnIndex("taskTitle"));
+                titleBox.setText(data);
+
+                data = c.getString(c.getColumnIndex("taskDescription"));
+                descriptionBox.setText(data);
+
+                data = c.getString(c.getColumnIndex("listID"));
+
+
+                data = c.getString(c.getColumnIndex("startDate"));
+                if(data==null)
+                {
+                    data= "Pick Date";
+                }
+                stDateBtn.setText(data);
+
+                data = c.getString(c.getColumnIndex("dueDate"));
+                if(data==null)
+                {
+                    data= "Pick Date";
+                }
+                enDateBtn.setText(data);
+
+
+            }while(c.moveToNext());
+        }
+        c.close();
+
+        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
+
+        dbm.close();
+    }
+
     public void cancelCreation(View v)
     {
         finish();

@@ -22,29 +22,6 @@ import java.util.ArrayList;
 
 public class addingTask extends taskEditor {
 
-    Task newTask;
-
-
-
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addingtask);
-
-        completeButton=(Button)findViewById(R.id.completeButton);
-
-        titleBox=(EditText)findViewById((R.id.taskTitleEdit));
-        descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
-
-        stDateBtn = (Button)findViewById(R.id.startDateEdit);
-        enDateBtn=(Button)findViewById(R.id.endDateEdit);
-
-        listChoice=(Spinner)findViewById(R.id.listChoice);
-
-        populateListChoice();
-
-    }
-
     //is run when a user clicks the 'done' button
     public void complete(View v)
     {
@@ -54,7 +31,7 @@ public class addingTask extends taskEditor {
             database.open();
 
             //grab infromation from user input
-            newTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), (int) listID,
+            Task newTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), (int) listID,
                     chosenStartDate, chosenEndDate);
 
             //insert into database
