@@ -1780,7 +1780,8 @@ containing a value of this type.
         public static final int abc_vector_test=0x7f020052;
         public static final int add=0x7f020053;
         public static final int ic_launcher=0x7f020054;
-        public static final int notification_template_icon_bg=0x7f020055;
+        public static final int notification_template_icon_bg=0x7f020056;
+        public static final int roundbutton=0x7f020055;
     }
     public static final class id {
         public static final int action0=0x7f0c006d;
@@ -1799,11 +1800,11 @@ containing a value of this type.
         public static final int action_mode_bar_stub=0x7f0c0041;
         public static final int action_mode_close_button=0x7f0c0026;
         public static final int activity_chooser_view_content=0x7f0c0027;
-        public static final int activity_main=0x7f0c0065;
+        public static final int activity_main=0x7f0c0066;
         public static final int add=0x7f0c0013;
         public static final int addNew=0x7f0c0058;
         public static final int addNewListBtn=0x7f0c006a;
-        public static final int addNewTaskBtn=0x7f0c0068;
+        public static final int addNewTaskBtn=0x7f0c0063;
         public static final int alertTitle=0x7f0c0033;
         public static final int always=0x7f0c001d;
         public static final int beginning=0x7f0c001a;
@@ -1816,7 +1817,7 @@ containing a value of this type.
         public static final int contentPanel=0x7f0c0034;
         public static final int custom=0x7f0c003a;
         public static final int customPanel=0x7f0c0039;
-        public static final int datePicker=0x7f0c0063;
+        public static final int datePicker=0x7f0c0064;
         public static final int decor_content_parent=0x7f0c0043;
         public static final int default_activity_button=0x7f0c002a;
         public static final int disableHome=0x7f0c000c;
@@ -1830,7 +1831,7 @@ containing a value of this type.
         public static final int home=0x7f0c0004;
         public static final int homeAsUp=0x7f0c000d;
         public static final int icon=0x7f0c002c;
-        public static final int icony=0x7f0c0067;
+        public static final int icony=0x7f0c0068;
         public static final int ifRoom=0x7f0c001f;
         public static final int image=0x7f0c0029;
         public static final int info=0x7f0c0078;
@@ -1847,7 +1848,7 @@ containing a value of this type.
         public static final int list_item=0x7f0c002b;
         public static final int media_actions=0x7f0c0070;
         public static final int menuListPage=0x7f0c0069;
-        public static final int menuTaskPage=0x7f0c0066;
+        public static final int menuTaskPage=0x7f0c0067;
         public static final int middle=0x7f0c001c;
         public static final int multiply=0x7f0c0014;
         public static final int never=0x7f0c0020;
@@ -1897,7 +1898,7 @@ containing a value of this type.
         public static final int text2=0x7f0c0075;
         public static final int textSpacerNoButtons=0x7f0c0037;
         public static final int time=0x7f0c0073;
-        public static final int timePicker=0x7f0c0064;
+        public static final int timePicker=0x7f0c0065;
         public static final int title=0x7f0c002d;
         public static final int title_template=0x7f0c0032;
         public static final int top=0x7f0c0023;

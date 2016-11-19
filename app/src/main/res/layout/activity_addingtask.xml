@@ -68,16 +68,16 @@
         android:onClick="chooseEndDate"
         android:layout_below="@+id/enTxt"/>
 
-    <!--causes addNew button to float above keyboard -->
+    <!--causes addNewTaskBtn button to float above keyboard -->
 <ListView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"></ListView>
+    android:layout_height="wrap_content"></ListView>
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageButton
-        android:id="@+id/addNew"
+        android:id="@+id/addNewTaskBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -86,7 +86,8 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_sort_by_size"
-        android:background="@null"
+        android:background="@drawable/roundbutton"
+        android:padding="15dp"
         android:onClick="complete" />
 </RelativeLayout>
 

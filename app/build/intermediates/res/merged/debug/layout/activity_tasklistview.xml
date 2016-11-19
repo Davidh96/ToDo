@@ -69,7 +69,8 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_sort_by_size"
-        android:background="@null"
+        android:background="@drawable/roundbutton"
+        android:padding="15dp"
         android:onClick="addList"/>
 
 </RelativeLayout>

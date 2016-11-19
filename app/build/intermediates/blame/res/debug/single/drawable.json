@@ -100,6 +100,10 @@
         "source": "/home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
+        "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/drawable/roundbutton.xml",
+        "source": "/home/david/Desktop/ToDo/app/src/main/res/drawable/roundbutton.xml"
+    },
+    {
         "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/drawable/abc_ic_ab_back_material.xml",
         "source": "/home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_ic_ab_back_material.xml"
     },
@@ -114,6 +118,10 @@
     {
         "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
         "source": "/home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/drawable/add.png",
+        "source": "/home/david/Desktop/ToDo/app/src/main/res/drawable/add.png"
     },
     {
         "merged": "/home/david/Desktop/ToDo/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
