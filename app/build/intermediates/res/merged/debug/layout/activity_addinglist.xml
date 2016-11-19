@@ -53,7 +53,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginRight="16dp"
             android:clickable="true"
-            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:src="@android:drawable/ic_menu_save"
             android:onClick="complete"
             android:background="@drawable/roundbutton"
             android:padding="15dp" />

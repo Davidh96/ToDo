@@ -57,7 +57,7 @@
         android:onClick="addTask"
         android:background="@drawable/roundbutton"
         android:padding="15dp"
-        android:src="@android:drawable/ic_menu_sort_by_size"
+        android:src="@android:drawable/ic_menu_add"
     />
 
     <!--android:src="@android:drawable/ic_menu_sort_by_size"-->
