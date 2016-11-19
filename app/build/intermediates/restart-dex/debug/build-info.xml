@@ -5,7 +5,7 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="16389949493996"
+    timestamp="19615266026558"
     token="-7428864542300853889"
     verifier="COMPATIBLE" >
 
@@ -34,8 +34,8 @@
             type="MAIN" />
     </build>
     <build
-        timestamp="16131422141967"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="19573285663042"
+        verifier="R_CLASS_CHANGE" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
             type="DEX" />
@@ -44,7 +44,7 @@
             type="DEX" />
     </build>
     <build
-        timestamp="16389949493996"
+        timestamp="19615266026558"
         verifier="COMPATIBLE" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"

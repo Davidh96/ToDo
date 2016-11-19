@@ -190,7 +190,7 @@ public class MainActivity extends ListActivity {
     //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
     public void populateListChoice()
     {
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listItems);
+        adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item, listItems);
         menuTaskPage.setAdapter(adapter);
     }
 
