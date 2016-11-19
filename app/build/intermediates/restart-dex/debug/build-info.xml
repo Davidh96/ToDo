@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
+    abi="x86_64,x86"
     api-level="23"
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="12085646716804"
+    timestamp="16815286357125"
     token="-7428864542300853889"
     verifier="COMPATIBLE" >
 
@@ -27,14 +27,14 @@
         type="RESOURCES" />
 
     <build
-        timestamp="10848371030887"
+        timestamp="16177829751119"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="12085646716804"
+        timestamp="16815286357125"
         verifier="COMPATIBLE" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <!--ref:https://developer.android.com/reference/android/widget/DatePicker.html#getMonth()-->
     <DatePicker
         android:layout_width="wrap_content"
@@ -19,18 +20,41 @@
     <TimePicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/timePicker"></TimePicker>
+        android:id="@+id/timePicker"
+        android:layout_below="@+id/datePicker"></TimePicker>
+        </RelativeLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="complete"
-        android:onClick="completeDateTime"/>
+    </ScrollView>
 
-    <Button
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:onClick="cancelDateTime"/>
-</LinearLayout>
-</ScrollView>
+        android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/addNewTaskBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_save"
+            android:background="@drawable/roundbutton"
+            android:padding="15dp"
+            android:onClick="completeDateTime" />
+    </RelativeLayout>
+
+
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="complete"-->
+        <!--android:onClick="completeDateTime"/>-->
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Cancel"-->
+        <!--android:onClick="cancelDateTime"/>-->
+</RelativeLayout>
