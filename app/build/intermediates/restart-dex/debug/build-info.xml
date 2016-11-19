@@ -5,54 +5,50 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="2875604861195"
+    timestamp="16389949493996"
     token="-7428864542300853889"
-    verifier="METHOD_ADDED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="93" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="35" />
+        duration="0" />
     <task
         name="verifier"
-        duration="4" />
+        duration="0" />
 
     <artifact
-        location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
-        type="DEX" />
+        location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
-        timestamp="1507848193622"
+        timestamp="15004877545109"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="1858816710694"
+        timestamp="16131422141967"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
             type="DEX" />
-    </build>
-    <build
-        timestamp="1883552822958"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
-            type="RESOURCES" />
-    </build>
-    <build
-        timestamp="2875604861195"
-        verifier="METHOD_ADDED" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
             type="DEX" />
+    </build>
+    <build
+        timestamp="16389949493996"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

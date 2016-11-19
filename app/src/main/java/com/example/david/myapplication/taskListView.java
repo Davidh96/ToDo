@@ -5,13 +5,16 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -22,12 +25,20 @@ public class taskListView extends ListActivity {
 
     public static Cursor c;
     public static SimpleCursorAdapter adapt;
+    Spinner menuListPage;
 
     databaseManager dbm;
+
+    String[] listItems;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklistview);
+
+        Resources res = getResources();
+        listItems = res.getStringArray(R.array.menuItems);
+
+        menuListPage=(Spinner)findViewById(R.id.menuListPage);
 
 
         //information I want to retriev from the db
@@ -101,6 +112,27 @@ public class taskListView extends ListActivity {
 
             }
         });
+
+        //ref https://stackoverflow.com/questions/1337424/android-spinner-get-the-selected-item-change-event#1714426
+
+        menuListPage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(listItems[position].equals("Tasks")) {
+                    // your code here
+                    MainActivity.menuTaskPage.setSelection(0);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+        populateListChoice();
     }
 
     public void viewTask(View v){
@@ -111,5 +143,14 @@ public class taskListView extends ListActivity {
     {
         Intent addingTask = new Intent(this,addingList.class);
         startActivity(addingTask);
+    }
+
+    //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
+    public void populateListChoice()
+    {
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listItems);
+        menuListPage.setAdapter(adapter);
+        menuListPage.setSelection(1);
     }
 }

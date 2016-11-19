@@ -150,8 +150,6 @@ public class taskEditor extends Activity {
         }
         c.close();
 
-        //Toast.makeText(this, "" +id, Toast.LENGTH_SHORT).show();
-
         dbm.close();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, lists);

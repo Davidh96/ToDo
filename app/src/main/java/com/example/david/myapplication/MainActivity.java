@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,19 +21,30 @@ import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.david.myapplication.R.styleable.Spinner;
+
 public class MainActivity extends ListActivity {
 
     public static SimpleCursorAdapter adapt;
+    public static ArrayAdapter<String> adapter;
 
     static databaseManager dbm;
     static Cursor c;
 
 
     Button addTask;
+
+    public static Spinner menuTaskPage;
+
+    String[] listItems;
+
+
+    //String[] listItems = new String[]{"Tasks","Lists"};
 
     //ref https://developer.android.com/guide/topics/ui/notifiers/notifications.html
     //
@@ -44,6 +56,11 @@ public class MainActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Resources res = getResources();
+        listItems = res.getStringArray(R.array.menuItems);
+
+        menuTaskPage=(Spinner)findViewById(R.id.menuTaskPage);
 
         //
         notif = new NotificationCompat.Builder(this);
@@ -118,6 +135,27 @@ public class MainActivity extends ListActivity {
             }
         });
 
+        //ref https://stackoverflow.com/questions/1337424/android-spinner-get-the-selected-item-change-event#1714426
+
+        menuTaskPage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(listItems[position].equals("Lists")) {
+                    // your code here
+                    Intent viewsLists = new Intent(MainActivity.this, taskListView.class);
+                    startActivity(viewsLists);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+        populateListChoice();
+
     }
 
     //called when add list button is clicked
@@ -147,6 +185,13 @@ public class MainActivity extends ListActivity {
         //get notification manager
         NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         nm.notify(1222222,notif.build());
+    }
+
+    //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
+    public void populateListChoice()
+    {
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listItems);
+        menuTaskPage.setAdapter(adapter);
     }
 
 
