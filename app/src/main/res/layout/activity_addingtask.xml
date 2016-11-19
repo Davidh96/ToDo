@@ -1,78 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Task Name: "/>
+        android:text="Task Name: "
+        android:id="@+id/taskTitleText"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/taskTitleEdit"
+        android:layout_below="@+id/taskTitleText"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Task Description: "/>
+        android:text="Task Description: "
+        android:id="@+id/taskDescText"
+        android:layout_below="@+id/taskTitleEdit"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/taskDescriptionEdit"
+        android:layout_below="@+id/taskDescText"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List ID: "/>
+        android:text="List ID: "
+        android:id="@+id/listIDText"
+        android:layout_below="@+id/taskDescriptionEdit"/>
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listChoice"></Spinner>
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/listIDEdit"-->
-        <!--/>-->
+        android:id="@+id/listChoice"
+        android:layout_below="@+id/listIDText"></Spinner>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Date: "
-        android:id="@+id/sdTxt"/>
+        android:id="@+id/sdTxt"
+        android:layout_below="@+id/listChoice"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/startDateEdit"
         android:text="Pick Date"
-        android:onClick="chooseStartDate"/>
+        android:onClick="chooseStartDate"
+        android:layout_below="@+id/sdTxt"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End Date: "/>
+        android:text="End Date: "
+        android:id="@+id/enTxt"
+        android:layout_below="@+id/startDateEdit"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/endDateEdit"
         android:text="Pick Date"
-        android:onClick="chooseEndDate"/>
+        android:onClick="chooseEndDate"
+        android:layout_below="@+id/enTxt"/>
 
-    <Button
+    <!--causes addNew button to float above keyboard -->
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageButton
+        android:id="@+id/addNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Done"
-        android:onClick="complete"
-        android:id="@+id/completeButton"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_sort_by_size"
+        android:background="@null"
+        android:onClick="complete" />
+</RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:onClick="cancelCreation"
-        android:id="@+id/cancelCreationButton"/>
 
 
-</LinearLayout>
+
+</RelativeLayout>

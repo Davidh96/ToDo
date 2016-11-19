@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class taskEditor extends Activity {
 
-    Button completeButton;
 
     EditText titleBox;
     EditText descriptionBox;
@@ -47,8 +46,6 @@ public class taskEditor extends Activity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addingtask);
-
-        completeButton=(Button)findViewById(R.id.completeButton);
 
         titleBox=(EditText)findViewById((R.id.taskTitleEdit));
         descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
@@ -116,11 +113,6 @@ public class taskEditor extends Activity {
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
 
         dbm.close();
-    }
-
-    public void cancelCreation(View v)
-    {
-        finish();
     }
 
     //ref https://developer.android.com/guide/topics/ui/controls/spinner.html

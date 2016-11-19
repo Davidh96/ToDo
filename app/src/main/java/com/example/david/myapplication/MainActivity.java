@@ -91,16 +91,6 @@ public class MainActivity extends ListActivity {
         setListAdapter(adapt);
         dbm.close();
 
-        //display screen to create a new task
-        addTaskBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent addingTask = new Intent(MainActivity.this,addingTask.class);
-                startActivity(addingTask);
-
-            }
-        });
-
         ListView lv = (ListView)findViewById(android.R.id.list);
 
         //open up screen to allow user to edit task
@@ -208,6 +198,12 @@ public class MainActivity extends ListActivity {
         adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item,listItems);
         adapter.setDropDownViewResource(R.layout.custom_spinner_drop_item);
         menuTaskPage.setAdapter(adapter);
+    }
+
+    public void addTask(View v)
+    {
+        Intent addingTask = new Intent(MainActivity.this,addingTask.class);
+        startActivity(addingTask);
     }
 
 
