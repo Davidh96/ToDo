@@ -3,23 +3,73 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add List"
-        android:id="@+id/addList"
-        android:onClick="addList"/>
+
+
+    <!--<Spinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/addList"-->
+        <!--android:id="@+id/menuListPage"></Spinner>-->
+
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addList"
-        android:id="@+id/menuListPage"></Spinner>
+        android:id="@+id/menuListPage"
+        android:background="#3f51b5"
+        ></Spinner>
+
+    <ImageView
+        android:id="@+id/icony"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_sort_by_size"
+        android:padding="15dp"
+        android:layout_alignParentRight="true"
+
+        />
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/menuListPage"-->
+        <!--android:text="Add List"-->
+        <!--android:id="@+id/addList"-->
+        <!--android:onClick="addList"/>-->
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Add List"-->
+        <!--android:id="@+id/addList"-->
+        <!--android:onClick="addList"/>-->
+
+    <!--<ListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@+id/menuListPage"-->
+    <!--android:id="@android:id/list"></ListView>-->
+
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@android:id/list"
         android:layout_below="@+id/menuListPage"
-        android:id="@android:id/list"></ListView>
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        ></ListView>
+
+    <ImageButton
+        android:id="@+id/addNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_sort_by_size"
+        android:background="@null"
+        android:onClick="addList"/>
 
 </RelativeLayout>

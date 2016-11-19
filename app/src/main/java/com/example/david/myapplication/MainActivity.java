@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -37,7 +38,8 @@ public class MainActivity extends ListActivity {
     static Cursor c;
 
 
-    Button addTask;
+    ImageButton addTaskBtn;
+
 
     public static Spinner menuTaskPage;
 
@@ -61,6 +63,8 @@ public class MainActivity extends ListActivity {
         listItems = res.getStringArray(R.array.menuItems);
 
         menuTaskPage=(Spinner)findViewById(R.id.menuTaskPage);
+
+        addTaskBtn=(ImageButton)findViewById(R.id.addNew);
 
         //
         notif = new NotificationCompat.Builder(this);
@@ -87,10 +91,8 @@ public class MainActivity extends ListActivity {
         setListAdapter(adapt);
         dbm.close();
 
-        addTask=(Button)findViewById(R.id.addTask);
-
         //display screen to create a new task
-        addTask.setOnClickListener(new View.OnClickListener() {
+        addTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent addingTask = new Intent(MainActivity.this,addingTask.class);
@@ -154,6 +156,18 @@ public class MainActivity extends ListActivity {
 
         });
 
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addNew);
+//
+//        fab.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                Intent intent = new Intent(MainActivity.this, AddNew.class);
+//                startActivity(intent);
+//            }
+//        });
+
         populateListChoice();
 
     }
@@ -190,7 +204,9 @@ public class MainActivity extends ListActivity {
     //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
     public void populateListChoice()
     {
-        adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item, listItems);
+        // R.id.spinnerTitle
+        adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item,listItems);
+        adapter.setDropDownViewResource(R.layout.custom_spinner_drop_item);
         menuTaskPage.setAdapter(adapter);
     }
 

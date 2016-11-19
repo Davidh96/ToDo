@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -44,7 +45,7 @@ public class taskListView extends ListActivity {
         //information I want to retriev from the db
         String[] columns = new String[]{"listTitle"};
         //where i want to dsiplay the informtion
-        int[] to =new int[] {R.id.listTitle1};
+        int[] to =new int[] {R.id.listTitle};
 
         dbm = new databaseManager(this);
         dbm.open();
@@ -150,6 +151,8 @@ public class taskListView extends ListActivity {
     {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listItems);
+        adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item,listItems);
+        adapter.setDropDownViewResource(R.layout.custom_spinner_drop_item);
         menuListPage.setAdapter(adapter);
         menuListPage.setSelection(1);
     }

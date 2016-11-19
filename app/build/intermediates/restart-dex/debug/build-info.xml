@@ -5,50 +5,52 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="19615266026558"
+    timestamp="6763896318219"
     token="-7428864542300853889"
-    verifier="COMPATIBLE" >
+    verifier="R_CLASS_CHANGE" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="191" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="39" />
     <task
         name="verifier"
-        duration="0" />
+        duration="16" />
 
     <artifact
         location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
         type="RESOURCES" />
+    <artifact
+        location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+        type="DEX" />
+    <artifact
+        location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="15004877545109"
+        timestamp="326725083808"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="19573285663042"
+        timestamp="6763896318219"
         verifier="R_CLASS_CHANGE" >
+        <artifact
+            location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
             type="DEX" />
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
             type="DEX" />
-    </build>
-    <build
-        timestamp="19615266026558"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
-            type="RESOURCES" />
     </build>
 
 </instant-run>
