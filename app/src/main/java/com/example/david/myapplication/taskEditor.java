@@ -81,16 +81,26 @@ public class taskEditor extends Activity {
 
         if (c.moveToFirst()) {
             do {
+                //gets entered title
                 data = c.getString(c.getColumnIndex("taskTitle"));
                 titleBox.setText(data);
 
+                //gets entered description
                 data = c.getString(c.getColumnIndex("taskDescription"));
                 descriptionBox.setText(data);
 
+                //gets chosen listid
                 data = c.getString(c.getColumnIndex("listID"));
                 listID = Long.parseLong(data);
 
-//                listChoice.setSelection(1);
+                //goes trough arraylist to find the list chosen by the user
+                for(int i=0;i<listIDs.size();i++)
+                {
+                    if(listID==listIDs.get(i))
+                    {
+                       listChoice.setSelection(i);
+                    }
+                }
 
 
 

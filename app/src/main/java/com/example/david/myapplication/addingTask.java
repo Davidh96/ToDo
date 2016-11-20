@@ -30,7 +30,7 @@ public class addingTask extends taskEditor {
             databaseManager database = new databaseManager(this);
             database.open();
 
-            listID=listChoice.getItemIdAtPosition(listChoice.getSelectedItemPosition());
+            listID=listIDs.get(listChoice.getSelectedItemPosition());
 
             //grab infromation from user input
             Task newTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), (int) listID,
