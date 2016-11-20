@@ -63,18 +63,36 @@
         android:layout_below="@+id/taskDescriptionEdit"
         android:textSize="20dp"
         />
-    <Spinner
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listChoice"
-        android:layout_below="@+id/listIDText"></Spinner>
+        android:layout_below="@+id/listIDText"
+        android:id="@+id/listChoiceLayout"
+        android:orientation="horizontal">
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listChoice"
+            android:layout_weight="5"
+            ></Spinner>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taskDescriptionEdit"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:background="@null"
+            android:onClick="addList"
+            android:padding="5dp"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Date: "
         android:id="@+id/sdTxt"
-        android:layout_below="@+id/listChoice"
+        android:layout_below="@+id/listChoiceLayout"
         android:textSize="20dp"
         />
     <Button

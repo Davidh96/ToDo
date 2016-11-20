@@ -240,4 +240,10 @@ public class taskEditor extends Activity {
                 .show();
     }
 
+    public void addList(View v)
+    {
+        Intent addingTask = new Intent(this,addingList.class);
+        startActivity(addingTask);
+    }
+
 }

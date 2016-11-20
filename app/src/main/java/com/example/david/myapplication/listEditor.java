@@ -95,8 +95,6 @@ public class listEditor extends ListActivity {
         }
         c.close();
 
-        Toast.makeText(this, "" +id, Toast.LENGTH_SHORT).show();
-
         dbm.close();
     }
 }
