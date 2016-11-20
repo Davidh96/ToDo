@@ -5,9 +5,9 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="16815286357125"
+    timestamp="8120984761046"
     token="-7428864542300853889"
-    verifier="COMPATIBLE" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
@@ -22,23 +22,22 @@
         name="verifier"
         duration="0" />
 
-    <artifact
-        location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
-        type="RESOURCES" />
-
     <build
-        timestamp="16177829751119"
+        timestamp="6634613403252"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="16815286357125"
-        verifier="COMPATIBLE" >
+        timestamp="8022773026507"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
-            type="RESOURCES" />
+            location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
+            type="DEX" />
     </build>
+    <build
+        timestamp="8120984761046"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

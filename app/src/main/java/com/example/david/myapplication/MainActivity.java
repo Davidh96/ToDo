@@ -23,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -84,6 +85,7 @@ public class MainActivity extends ListActivity {
         dbm.open();
         //retrieve cursor of all rows from db
         c = dbm.readTasks();
+        System.out.println(c);
         //c.close();
         //create adapter which displays task title
         adapt = new SimpleCursorAdapter(this, R.layout.task_row, c, columns, to,0);

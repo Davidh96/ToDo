@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.david.myapplication.test" >
+    package="me.itsdavidhunt.todo.test" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -10,8 +10,8 @@
         android:name="android.support.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for com.example.david.myapplication"
-        android:targetPackage="com.example.david.myapplication" />
+        android:label="Tests for me.itsdavidhunt.todo"
+        android:targetPackage="me.itsdavidhunt.todo" />
 
     <application>
         <uses-library android:name="android.test.runner" />

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -31,7 +32,7 @@ public class taskEditor extends Activity {
     Button enDateBtn;
 
 
-    int listID;
+    long listID;
     DatePicker startDate;
 
     String chosenStartDate;
@@ -39,40 +40,43 @@ public class taskEditor extends Activity {
 
     long id;
 
-    ArrayList<String> lists= new ArrayList<String>();
-    ArrayList<String> listItemID= new ArrayList<String>();
+    ArrayList<String> lists = new ArrayList<String>();
 
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addingtask);
 
-        titleBox=(EditText)findViewById((R.id.taskTitleEdit));
-        descriptionBox=(EditText)findViewById((R.id.taskDescriptionEdit));
-        stDateBtn=(Button)findViewById(R.id.startDateEdit);
-        enDateBtn=(Button)findViewById(R.id.endDateEdit);
+        titleBox = (EditText) findViewById((R.id.taskTitleEdit));
+        descriptionBox = (EditText) findViewById((R.id.taskDescriptionEdit));
+        stDateBtn = (Button) findViewById(R.id.startDateEdit);
+        enDateBtn = (Button) findViewById(R.id.endDateEdit);
 
 
-        startDate=(DatePicker)findViewById(R.id.datePicker);
+        startDate = (DatePicker) findViewById(R.id.datePicker);
 
-        listChoice = (Spinner)findViewById(R.id.listChoice);
+        listChoice = (Spinner) findViewById(R.id.listChoice);
 
         Intent i = getIntent();
 
-        id= i.getLongExtra("id",-1);
+        id = i.getLongExtra("id", -1);
 
-
-        populateListChoice();
         retrieveData();
+        populateListChoice();
 
 
-
+//        listChoice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                listID = id;
+//            }
+//        });
     }
 
+
     //retrieves data from the db and places into the correct fields so user can edit them
-    private void retrieveData(){
+    private void retrieveData() {
         //will hold selected information
-        String data="";
+        String data = "";
 
         databaseManager dbm = new databaseManager(this);
         dbm.open();
@@ -80,8 +84,8 @@ public class taskEditor extends Activity {
         //retrieve data from row
         Cursor c = dbm.readTask(id);
 
-        if (c.moveToFirst()){
-            do{
+        if (c.moveToFirst()) {
+            do {
                 data = c.getString(c.getColumnIndex("taskTitle"));
                 titleBox.setText(data);
 
@@ -89,38 +93,36 @@ public class taskEditor extends Activity {
                 descriptionBox.setText(data);
 
                 data = c.getString(c.getColumnIndex("listID"));
+                listID = Integer.parseInt(data);
+                Toast.makeText(this, "---" + data, Toast.LENGTH_SHORT).show();
 
 
                 data = c.getString(c.getColumnIndex("startDate"));
-                if(data==null)
-                {
-                    data= "Pick Date";
+                if (data == null) {
+                    data = "Pick Date";
                 }
                 stDateBtn.setText(data);
 
                 data = c.getString(c.getColumnIndex("dueDate"));
-                if(data==null)
-                {
-                    data= "Pick Date";
+                if (data == null) {
+                    data = "Pick Date";
                 }
                 enDateBtn.setText(data);
 
 
-            }while(c.moveToNext());
+            } while (c.moveToNext());
         }
         c.close();
 
-        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
 
         dbm.close();
     }
 
     //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
-    public void populateListChoice()
-    {
+    public void populateListChoice() {
 
         //will hold selected information
-        String data="";
+        String data = "";
 
         databaseManager dbm = new databaseManager(this);
         dbm.open();
@@ -128,17 +130,16 @@ public class taskEditor extends Activity {
         //retrieve data from row
         Cursor c = dbm.readLists();
 
-        if (c.moveToFirst()){
-            do{
+        if (c.moveToFirst()) {
+            do {
                 data = c.getString(c.getColumnIndex("listTitle"));
                 lists.add(data);
 
-                data = c.getString(c.getColumnIndex("_id"));
-                listItemID.add(data);
-                listID=Integer.parseInt(data);
+//                data = c.getString(c.getColumnIndex("_id"));
+//                listID=Integer.parseInt(data);
 
 
-            }while(c.moveToNext());
+            } while (c.moveToNext());
         }
         c.close();
 
@@ -148,27 +149,25 @@ public class taskEditor extends Activity {
         listChoice.setAdapter(adapter);
     }
 
-    public void chooseStartDate(View v)
-    {
+    public void chooseStartDate(View v) {
 
-        Intent chooseDate = new Intent(this,chooseDateTime.class);
+        Intent chooseDate = new Intent(this, chooseDateTime.class);
         //the user is choosing the start date
-        chooseDate.putExtra("forWhatDate","Start");
+        chooseDate.putExtra("forWhatDate", "Start");
 
         //ref https://developer.android.com/reference/android/app/Activity.html#startActivityForResult(android.content.Intent,%20int,%20android.os.Bundle)
-        startActivityForResult(chooseDate,0);
+        startActivityForResult(chooseDate, 0);
 
     }
 
-    public void chooseEndDate(View v)
-    {
+    public void chooseEndDate(View v) {
 
-        Intent chooseDate = new Intent(this,chooseDateTime.class);
+        Intent chooseDate = new Intent(this, chooseDateTime.class);
         //the user is choosing the end date
-        chooseDate.putExtra("forWhatDate","End");
+        chooseDate.putExtra("forWhatDate", "End");
 
         //ref https://developer.android.com/reference/android/app/Activity.html#startActivityForResult(android.content.Intent,%20int,%20android.os.Bundle)
-        startActivityForResult(chooseDate,0);
+        startActivityForResult(chooseDate, 0);
 
     }
 
@@ -177,52 +176,44 @@ public class taskEditor extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode==RESULT_OK)
-        {
+        if (resultCode == RESULT_OK) {
 
             //places bundle from intent into a new bundle
             Bundle returnInfo = data.getExtras();
             String dateType = returnInfo.getString("whichDate");
 
             //if the choice is for the start date
-            if(dateType.equals("Start")) {
+            if (dateType.equals("Start")) {
                 //gets the date from the bundle
                 chosenStartDate = returnInfo.getString("dateChosen");
                 chosenStartDate += " " + returnInfo.getString("timeChosen");
-                Toast.makeText(this,chosenStartDate , Toast.LENGTH_SHORT).show();
                 //if user canceled selection
-                if(chosenStartDate.equals("null null"))
-                {
-                    chosenStartDate=null;
+                if (chosenStartDate.equals("null null")) {
+                    chosenStartDate = null;
                     stDateBtn.setText("Pick Date");
-                }
-                else {
+                } else {
                     stDateBtn.setText(chosenStartDate);
                 }
 
             }
 
             // if the choice is for the due date
-            if(dateType.equals("End")) {
+            if (dateType.equals("End")) {
                 //gets the date from the bundle
                 chosenEndDate = returnInfo.getString("dateChosen");
                 chosenEndDate += " " + returnInfo.getString("timeChosen");
-                Toast.makeText(this, chosenEndDate, Toast.LENGTH_SHORT).show();
                 //if user canceled selection
-                if(chosenEndDate.equals("null null"))
-                {
-                    chosenEndDate=null;
+                if (chosenEndDate.equals("null null")) {
+                    chosenEndDate = null;
                     enDateBtn.setText("Pick Date");
-                }
-                else {
+                } else {
                     enDateBtn.setText(chosenEndDate);
                 }
             }
         }
     }
 
-    public void noTitleAlert()
-    {
+    public void noTitleAlert() {
         //create alert box
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         //alert title
@@ -239,4 +230,5 @@ public class taskEditor extends Activity {
                 })
                 .show();
     }
+
 }

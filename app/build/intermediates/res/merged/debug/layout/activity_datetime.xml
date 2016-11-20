@@ -9,19 +9,19 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-    <!--ref:https://developer.android.com/reference/android/widget/DatePicker.html#getMonth()-->
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/datePicker"
-        android:scaleX="1.16"
-        android:scaleY="1.2"/>
+            <!--ref:https://developer.android.com/reference/android/widget/DatePicker.html#getMonth()-->
+            <DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/datePicker"
+                android:scaleX="1.16"
+                android:scaleY="1.2"/>
 
-    <TimePicker
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/timePicker"
-        android:layout_below="@+id/datePicker"></TimePicker>
+            <TimePicker
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/timePicker"
+                android:layout_below="@+id/datePicker"></TimePicker>
         </RelativeLayout>
 
     </ScrollView>

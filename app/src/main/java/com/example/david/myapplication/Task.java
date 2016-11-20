@@ -10,12 +10,12 @@ public class Task {
     private int _id;
     private String taskTitle;
     private String taskDescription;
-    private int listID;
+    private long listID;
     private String startDate;
     private String dueDate;
 
 
-    public  Task(String taskTitle, String taskDescription, int listID, String startDate, String dueDate)
+    public  Task(String taskTitle, String taskDescription, long listID, String startDate, String dueDate)
     {
         this.taskTitle=taskTitle;
         this.taskDescription=taskDescription;
@@ -48,7 +48,7 @@ public class Task {
         this.taskDescription = taskDescription;
     }
 
-    public int getListID() {
+    public long getListID() {
         return listID;
     }
 

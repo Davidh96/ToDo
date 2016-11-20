@@ -22,17 +22,14 @@ import java.util.ArrayList;
 
 public class editTask extends taskEditor {
 
-
-
-
-
-
     //is run when a user clicks the 'done' button
     public void complete(View v)
     {
         if(!titleBox.getText().toString().equals("")) {
             databaseManager database = new databaseManager(this);
             database.open();
+            listID=listChoice.getItemIdAtPosition(listChoice.getSelectedItemPosition());
+
             //grab infromation from user input
             Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), listID,
                     chosenStartDate, chosenEndDate);

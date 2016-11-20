@@ -136,9 +136,9 @@ public class taskListView extends ListActivity {
         populateListChoice();
     }
 
-    public void viewTask(View v){
-        finish();
-    }
+//    public void viewTask(View v){
+//        finish();
+//    }
 
     public void addList(View v)
     {

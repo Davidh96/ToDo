@@ -25,7 +25,7 @@ MERGED from [com.android.support:support-fragment:24.2.1] /home/david/Desktop/To
 MERGED from [com.android.support:support-vector-drawable:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/AndroidManifest.xml:23:5-20
 MERGED from [com.android.support:animated-vector-drawable:24.2.1] /home/david/Desktop/ToDo/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:8:9-30
 	android:supportsRtl
 		ADDED from /home/david/Desktop/ToDo/app/src/main/AndroidManifest.xml:9:9-35
 	android:allowBackup

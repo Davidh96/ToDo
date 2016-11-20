@@ -1,31 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Task"
+        android:textSize="30dp"
+        android:id="@+id/addTaskPageTitle"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:background="#3f51b5"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Task Name: "
-        android:id="@+id/taskTitleText"/>
+        android:id="@+id/taskTitleText"
+        android:layout_below="@+id/addTaskPageTitle"
+        android:textSize="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/taskTitleEdit"
         android:layout_below="@+id/taskTitleText"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Task Description: "
         android:id="@+id/taskDescText"
-        android:layout_below="@+id/taskTitleEdit"/>
+        android:layout_below="@+id/taskTitleEdit"
+        android:textSize="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/taskDescriptionEdit"
         android:layout_below="@+id/taskDescText"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         />
 
     <TextView
@@ -33,7 +60,9 @@
         android:layout_height="wrap_content"
         android:text="List ID: "
         android:id="@+id/listIDText"
-        android:layout_below="@+id/taskDescriptionEdit"/>
+        android:layout_below="@+id/taskDescriptionEdit"
+        android:textSize="20dp"
+        />
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +74,9 @@
         android:layout_height="wrap_content"
         android:text="Start Date: "
         android:id="@+id/sdTxt"
-        android:layout_below="@+id/listChoice"/>
+        android:layout_below="@+id/listChoice"
+        android:textSize="20dp"
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +90,9 @@
         android:layout_height="wrap_content"
         android:text="End Date: "
         android:id="@+id/enTxt"
-        android:layout_below="@+id/startDateEdit"/>
+        android:layout_below="@+id/startDateEdit"
+        android:textSize="20dp"
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
