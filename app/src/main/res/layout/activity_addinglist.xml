@@ -16,14 +16,15 @@
         android:textColor="#FFFFFF"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="List Name: "
         android:id="@+id/listTitleText"
         android:layout_below="@+id/addTaskPageTitle"
         android:textSize="20dp"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,17 +32,20 @@
         android:layout_below="@+id/listTitleText"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:background="@color/colorAccent"
+
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="List Description: "
         android:id="@+id/listDescText"
         android:layout_below="@+id/listTitleEdit"
         android:textSize="20dp"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,6 +53,8 @@
         android:layout_below="@+id/listDescText"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:background="@color/colorAccent"
+
         />
 
     <!--<Button-->
@@ -62,7 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@android:id/list"
-        android:layout_below="@+id/listDescriptionEdit"></ListView>
+        android:layout_below="@+id/listDescriptionEdit"
+        ></ListView>
 
     <RelativeLayout
         android:layout_width="match_parent"

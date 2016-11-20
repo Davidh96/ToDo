@@ -5,26 +5,26 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="22438893551533"
+    timestamp="24305044296722"
     token="-7428864542300853889"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="119" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="17" />
+        duration="0" />
     <task
         name="verifier"
-        duration="1" />
+        duration="0" />
 
     <artifact
-        location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
-        type="DEX" />
+        location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
         timestamp="22330706488562"
@@ -34,11 +34,18 @@
             type="MAIN" />
     </build>
     <build
-        timestamp="22438893551533"
+        timestamp="23384643080377"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/david/Desktop/ToDo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
             type="DEX" />
+    </build>
+    <build
+        timestamp="24305044296722"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/david/Desktop/ToDo/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

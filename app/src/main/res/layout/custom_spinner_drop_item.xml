@@ -8,6 +8,5 @@
     android:paddingBottom="15dp"
     android:paddingLeft="15dp"
     android:layout_gravity="left"
-    android:textColor="#FFFFFF"
-    android:background="#7986cb"
+    android:background="@color/colorAccent"
      />

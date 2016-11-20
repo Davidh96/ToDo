@@ -4,6 +4,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
@@ -34,6 +40,8 @@
         android:layout_below="@+id/taskTitleText"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:background="@color/colorAccent"
+
         />
 
     <TextView
@@ -53,15 +61,18 @@
         android:layout_below="@+id/taskDescText"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:background="@color/colorAccent"
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="List ID: "
         android:id="@+id/listIDText"
         android:layout_below="@+id/taskDescriptionEdit"
         android:textSize="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,18 +93,21 @@
             android:layout_weight="1"
             android:layout_marginRight="5dp"
             android:src="@android:drawable/ic_menu_add"
-            android:background="@null"
             android:onClick="addList"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:background="@null"
+            />
     </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Start Date: "
         android:id="@+id/sdTxt"
         android:layout_below="@+id/listChoiceLayout"
         android:textSize="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         />
     <Button
         android:layout_width="match_parent"
@@ -101,15 +115,19 @@
         android:id="@+id/startDateEdit"
         android:text="Pick Date"
         android:onClick="chooseStartDate"
-        android:layout_below="@+id/sdTxt"/>
+        android:layout_below="@+id/sdTxt"
+        android:background="@color/colorAccent"
+        />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="End Date: "
         android:id="@+id/enTxt"
         android:layout_below="@+id/startDateEdit"
         android:textSize="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         />
     <Button
         android:layout_width="match_parent"
@@ -117,7 +135,11 @@
         android:id="@+id/endDateEdit"
         android:text="Pick Date"
         android:onClick="chooseEndDate"
-        android:layout_below="@+id/enTxt"/>
+        android:layout_below="@+id/enTxt"
+        android:background="@color/colorAccent"
+        />
+        </RelativeLayout>
+</ScrollView>
 
     <!--causes addNewTaskBtn button to float above keyboard -->
 <ListView
