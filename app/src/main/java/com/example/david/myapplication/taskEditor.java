@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class taskEditor extends Activity {
 
-
+    ArrayAdapter<String> adapter;
     EditText titleBox;
     EditText descriptionBox;
     Spinner listChoice;
@@ -41,6 +41,7 @@ public class taskEditor extends Activity {
     long id;
 
     ArrayList<String> lists = new ArrayList<String>();
+    ArrayList<Long> listIDs = new ArrayList<Long>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,16 +61,10 @@ public class taskEditor extends Activity {
 
         id = i.getLongExtra("id", -1);
 
-        retrieveData();
         populateListChoice();
+        retrieveData();
 
 
-//        listChoice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                listID = id;
-//            }
-//        });
     }
 
 
@@ -93,8 +88,10 @@ public class taskEditor extends Activity {
                 descriptionBox.setText(data);
 
                 data = c.getString(c.getColumnIndex("listID"));
-                listID = Integer.parseInt(data);
-                Toast.makeText(this, "---" + data, Toast.LENGTH_SHORT).show();
+                listID = Long.parseLong(data);
+
+//                listChoice.setSelection(1);
+
 
 
                 data = c.getString(c.getColumnIndex("startDate"));
@@ -127,16 +124,18 @@ public class taskEditor extends Activity {
         databaseManager dbm = new databaseManager(this);
         dbm.open();
         lists.add("Default");
+        listIDs.add((long)-1);
         //retrieve data from row
         Cursor c = dbm.readLists();
 
         if (c.moveToFirst()) {
             do {
+
                 data = c.getString(c.getColumnIndex("listTitle"));
                 lists.add(data);
 
-//                data = c.getString(c.getColumnIndex("_id"));
-//                listID=Integer.parseInt(data);
+                long id = c.getLong(c.getColumnIndex("_id"));
+                listIDs.add(id);
 
 
             } while (c.moveToNext());
@@ -145,7 +144,7 @@ public class taskEditor extends Activity {
 
         dbm.close();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, lists);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, lists);
         listChoice.setAdapter(adapter);
     }
 

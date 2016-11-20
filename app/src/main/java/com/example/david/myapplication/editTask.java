@@ -28,7 +28,9 @@ public class editTask extends taskEditor {
         if(!titleBox.getText().toString().equals("")) {
             databaseManager database = new databaseManager(this);
             database.open();
-            listID=listChoice.getItemIdAtPosition(listChoice.getSelectedItemPosition());
+            //listChoice.getItemIdAtPosition(listChoice.getSelectedItemPosition());
+            listID=listIDs.get(listChoice.getSelectedItemPosition());
+
 
             //grab infromation from user input
             Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), listID,
