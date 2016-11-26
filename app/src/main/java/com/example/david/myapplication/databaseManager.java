@@ -235,13 +235,16 @@ public class databaseManager extends SQLiteOpenHelper {
     //updates and notifies the cursor adapter of a change in the db
     public void requeryList() {
 
-        this.open();
-        //updates cursor
-        taskListView.c = this.readLists();
-        //notifies adapter of update
-        taskListView.adapt.changeCursor(taskListView.c);
+        //checks if the adapter in tasklistview has actually been created, prevents crashing when user creates new list from within taskEditor
+        if(taskListView.adapt!=null) {
+            this.open();
+            //updates cursor
+            taskListView.c = this.readLists();
+            //notifies adapter of update
+            taskListView.adapt.changeCursor(taskListView.c);
 
-        this.close();
+            this.close();
+        }
 
     }
 

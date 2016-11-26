@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
     <ScrollView
@@ -32,6 +32,7 @@
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingLeft="5dp"
         />
     <EditText
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
         android:layout_below="@+id/taskTitleText"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:background="@color/colorAccent"
+        android:background="@color/stripeAccent"
 
         />
 
@@ -53,6 +54,7 @@
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingLeft="5dp"
         />
     <EditText
         android:layout_width="match_parent"
@@ -61,53 +63,57 @@
         android:layout_below="@+id/taskDescText"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@color/colorAccent"
+        android:background="@color/stripeAccent"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="List ID: "
+        android:text="List: "
         android:id="@+id/listIDText"
         android:layout_below="@+id/taskDescriptionEdit"
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingLeft="5dp"
         />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/rl"
         android:layout_below="@+id/listIDText"
-        android:id="@+id/listChoiceLayout"
-        android:orientation="horizontal">
+        android:weightSum="10">
+
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/listChoice"
-            android:layout_weight="5"
+            android:layout_weight="9"
+
             ></Spinner>
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/taskDescriptionEdit"
+            android:src="@android:drawable/ic_menu_save"
+            android:background="@drawable/roundbutton"
             android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:src="@android:drawable/ic_menu_add"
-            android:onClick="addList"
-            android:padding="5dp"
-            android:background="@null"
-            />
-    </LinearLayout>
+            android:layout_alignLeft="@+id/listChoice"
+            android:onClick="TEcreateList"
+        />
 
+        </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Start Date: "
         android:id="@+id/sdTxt"
-        android:layout_below="@+id/listChoiceLayout"
+        android:layout_below="@+id/rl"
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingLeft="5dp"
         />
     <Button
         android:layout_width="match_parent"
@@ -116,8 +122,8 @@
         android:text="Pick Date"
         android:onClick="chooseStartDate"
         android:layout_below="@+id/sdTxt"
-        android:background="@color/colorAccent"
-        />
+        android:background="@color/stripeAccent"
+        android:elevation="0dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -128,6 +134,7 @@
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingLeft="5dp"
         />
     <Button
         android:layout_width="match_parent"
@@ -136,8 +143,8 @@
         android:text="Pick Date"
         android:onClick="chooseEndDate"
         android:layout_below="@+id/enTxt"
-        android:background="@color/colorAccent"
-        />
+        android:background="@color/stripeAccent"
+        android:elevation="0dp" />
         </RelativeLayout>
 </ScrollView>
 

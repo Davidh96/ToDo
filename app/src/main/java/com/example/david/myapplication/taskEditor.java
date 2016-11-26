@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -101,8 +102,6 @@ public class taskEditor extends Activity {
                        listChoice.setSelection(i);
                     }
                 }
-
-
 
                 data = c.getString(c.getColumnIndex("startDate"));
                 if (data == null) {
@@ -222,6 +221,7 @@ public class taskEditor extends Activity {
         }
     }
 
+    //gives alert if user tries to create task without name
     public void noTitleAlert() {
         //create alert box
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -240,10 +240,18 @@ public class taskEditor extends Activity {
                 .show();
     }
 
-    public void addList(View v)
-    {
-        Intent addingTask = new Intent(this,addingList.class);
-        startActivity(addingTask);
+    //opens up intent to allow user to create new list
+    public void TEcreateList(View view){
+        Intent createList = new Intent(this,addingList.class);
+        startActivity(createList);
     }
+
+    //will repopulate spinner list when the user returns to the intent after creating a new list
+    protected void onRestart()
+    {
+        super.onRestart();
+        populateListChoice();
+    }
+
 
 }

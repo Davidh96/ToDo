@@ -8,5 +8,5 @@
     android:paddingBottom="15dp"
     android:paddingLeft="15dp"
     android:layout_gravity="left"
-    android:background="@color/colorAccent"
+    android:background="@color/stripeAccent"
      />

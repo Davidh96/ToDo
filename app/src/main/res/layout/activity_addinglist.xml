@@ -24,6 +24,7 @@
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingLeft="5dp"
         />
     <EditText
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
         android:layout_below="@+id/listTitleText"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:background="@color/colorAccent"
+        android:background="@color/stripeAccent"
 
         />
 
@@ -45,6 +46,7 @@
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
+        android:paddingLeft="5dp"
         />
     <EditText
         android:layout_width="match_parent"
@@ -53,16 +55,9 @@
         android:layout_below="@+id/listDescText"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:background="@color/colorAccent"
+        android:background="@color/stripeAccent"
 
         />
-
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Done"-->
-        <!--android:onClick="complete"-->
-        <!--android:id="@+id/completeButton"/>-->
 
     <ListView
         android:layout_width="match_parent"
