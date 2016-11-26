@@ -43,9 +43,9 @@ public class taskListView extends ListActivity {
 
 
         //information I want to retriev from the db
-        String[] columns = new String[]{"listTitle"};
+        String[] columns = new String[]{"listTitle","listDescription"};
         //where i want to dsiplay the informtion
-        int[] to =new int[] {R.id.listTitle};
+        int[] to =new int[] {R.id.listTitle,R.id.listDescriptionView};
 
         dbm = new databaseManager(this);
         dbm.open();

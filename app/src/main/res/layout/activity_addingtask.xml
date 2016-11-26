@@ -42,6 +42,7 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:background="@color/stripeAccent"
+        android:paddingLeft="5dp"
 
         />
 
@@ -64,6 +65,8 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:background="@color/stripeAccent"
+        android:paddingLeft="5dp"
+
         />
 
     <TextView
@@ -96,8 +99,8 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_save"
-            android:background="@drawable/roundbutton"
+            android:src="@android:drawable/ic_menu_add"
+            android:background="@null"
             android:layout_weight="1"
             android:layout_alignLeft="@+id/listChoice"
             android:onClick="TEcreateList"

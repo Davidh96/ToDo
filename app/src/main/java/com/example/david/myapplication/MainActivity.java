@@ -76,9 +76,9 @@ public class MainActivity extends ListActivity {
 
 
         //information I want to retriev from the db
-        String[] columns = new String[]{"taskTitle"};
+        String[] columns = new String[]{"taskTitle","taskDescription"};
         //where i want to dsiplay the informtion
-        int[] to =new int[] {R.id.taskTitle};
+        int[] to =new int[] {R.id.taskTitle,R.id.taskDescriptionView};
 
 
         dbm = new databaseManager(this);
