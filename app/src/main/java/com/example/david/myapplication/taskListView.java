@@ -1,6 +1,5 @@
 package com.example.david.myapplication;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -12,14 +11,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
  * Created by david on 14/11/16.
+ * contains code used to display listview of lists
  */
 
+//displays the list of lists created by the user
 public class taskListView extends ListActivity {
 
     public static Cursor c;
@@ -30,6 +30,7 @@ public class taskListView extends ListActivity {
 
     String[] listItems;
 
+    //is called when view of lists is being created
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklistview);
@@ -68,9 +69,7 @@ public class taskListView extends ListActivity {
             }
         });
 
-        //ref https://stackoverflow.com/questions/2115758/how-do-i-display-an-alert-dialog-on-android
-        //ref https://developer.android.com/reference/android/app/AlertDialog.html
-        //ref https://developer.android.com/guide/topics/ui/dialogs.html
+
         //long press to delete list
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
@@ -78,6 +77,11 @@ public class taskListView extends ListActivity {
                                            int pos, long _id) {
                 // TODO Auto-generated method stub
                 final long id=_id;
+
+                //Reference: The following ccode was created wit the help of the following links
+                //https://stackoverflow.com/questions/2115758/how-do-i-display-an-alert-dialog-on-android
+                //ref https://developer.android.com/reference/android/app/AlertDialog.html
+                //ref https://developer.android.com/guide/topics/ui/dialogs.html
 
                 //create alert box
                 AlertDialog.Builder alert = new AlertDialog.Builder(taskListView.this);
@@ -105,13 +109,16 @@ public class taskListView extends ListActivity {
                         })
                         .show();
 
+                //End Reference
+
                 return true;
 
             }
         });
 
-        //ref https://stackoverflow.com/questions/1337424/android-spinner-get-the-selected-item-change-event#1714426
-
+        //Reference: The following code was created with the help of the following link
+        // https://stackoverflow.com/questions/1337424/android-spinner-get-the-selected-item-change-event#1714426
+        //when a item in the menu has been chosen
         menuListPage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -128,26 +135,25 @@ public class taskListView extends ListActivity {
             }
 
         });
+        //End Reference
 
         populateListChoice();
     }
 
-//    public void viewTask(View v){
-//        finish();
-//    }
-
+    //opens up screen to add a new list
     public void addList(View v)
     {
         Intent addingTask = new Intent(this,addingList.class);
         startActivity(addingTask);
     }
 
-    //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
+    //populates dropdown menu with menu items
     public void populateListChoice()
     {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listItems);
         adapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item,listItems);
+        //set the menu item to 'lists'
         adapter.setDropDownViewResource(R.layout.custom_spinner_drop_item);
         menuListPage.setAdapter(adapter);
         menuListPage.setSelection(1);

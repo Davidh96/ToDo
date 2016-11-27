@@ -24,38 +24,47 @@ public class Task {
         this.dueDate=dueDate;
     }
 
+    //returns task id
     public int get_id() {
         return _id;
     }
 
+    //sets task id
     public void set_id(int _id) {
         this._id = _id;
     }
 
+    //returns task title
     public String getTaskTitle() {
         return taskTitle;
     }
 
+    //sets task title
     public void setTaskTitle(String taskTitle) {
         this.taskTitle = taskTitle;
     }
 
+    //returns task description
     public String getTaskDescription() {
         return taskDescription;
     }
 
+    //sets task description
     public void setTaskDescription(String taskDescription) {
         this.taskDescription = taskDescription;
     }
 
+    //returns list id of task
     public long getListID() {
         return listID;
     }
 
+    //sets list id of task
     public void setListID(int listID) {
         this.listID = listID;
     }
 
+    //returns task start date
     public String getStartDate() {
         return startDate;
     }
@@ -64,6 +73,7 @@ public class Task {
         this.startDate = startDate;
     }
 
+    //returns task due date
     public String getDueDate() {
         return dueDate;
     }

@@ -10,8 +10,10 @@ import android.util.Log;
 
 /**
  * Created by David on 12/11/2016.
+ * is the controller of database access and manipulating the data within the database
  */
 
+//manager of the database
 public class databaseManager extends SQLiteOpenHelper {
 
     //database information
@@ -23,6 +25,7 @@ public class databaseManager extends SQLiteOpenHelper {
     private static SQLiteDatabase db;
 
     //create table sql code
+    //task table sql
     String createTaskTable = "Create Table " + taskTableName +"(" +
             "_id integer primary key autoincrement," +
             "taskTitle text," +
@@ -32,6 +35,7 @@ public class databaseManager extends SQLiteOpenHelper {
             "dueDate text" +
             ");";
 
+    //list table sql
     String createListTable = "Create Table " + listTableName +"(" +
             "_id integer primary key autoincrement," +
             "listTitle text," +
@@ -39,10 +43,12 @@ public class databaseManager extends SQLiteOpenHelper {
             "listColour integer"+
             ");";
 
+    //constructor
     public databaseManager(Context context) {
         super(context, dbName, null, dbVersion);
     }
 
+    //called when the database is to be created first
     public void onCreate(SQLiteDatabase db) {
         //create table called task
         try {
@@ -51,14 +57,16 @@ public class databaseManager extends SQLiteOpenHelper {
         }
         catch(SQLException e)
         {
-            Log.e("Error executing SQL...", e.toString());
+            Log.e("Error executing SQL: ", e.toString());
         }
     }
 
+    //is called to upgrade the datbase
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 
+    //opens up the database for writing to it
     public databaseManager open()
     {
         //open up db for writing to
@@ -66,6 +74,7 @@ public class databaseManager extends SQLiteOpenHelper {
         return this;
     }
 
+    //opens up the database to read from it
     public databaseManager read()
     {
         //opens up db for reading from
@@ -227,7 +236,7 @@ public class databaseManager extends SQLiteOpenHelper {
         //updates cursor
         MainActivity.c = this.readTasks();
         //notifies adapter of update
-        MainActivity.adapt.changeCursor(MainActivity.c);
+        MainActivity.listAdapter.changeCursor(MainActivity.c);
 
         this.close();
 

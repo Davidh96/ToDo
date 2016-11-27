@@ -1,6 +1,8 @@
 package com.example.david.myapplication;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,8 +13,10 @@ import android.widget.ListView;
 
 /**
  * Created by david on 18/11/16.
+ * contains code that its subclasses use to perform adding/editing list information
  */
 
+//super class that contains functionality used by the edit/adding list classes
 public class listEditor extends ListActivity {
 
     EditText listTitle;
@@ -20,17 +24,18 @@ public class listEditor extends ListActivity {
 
     long id;
 
-
+    //called when the list editor is created
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addinglist);
 
+        //get views
         listTitle=(EditText)findViewById(R.id.listTitleEdit);
         listDescription=(EditText)findViewById(R.id.listDescriptionEdit);
 
+        //get the id for the list that is being displayed
         Intent i = getIntent();
-
         id= i.getLongExtra("id",-1);
 
         retrieveData();
@@ -40,6 +45,7 @@ public class listEditor extends ListActivity {
         //where i want to dsiplay the informtion
         int[] to =new int[] {R.id.taskTitle};
 
+        //open database
         databaseManager dbm = new databaseManager(this);
         dbm.open();
         //retrieve cursor of all rows from db
@@ -65,6 +71,26 @@ public class listEditor extends ListActivity {
 
     }
 
+    //gives alert if user tries to create task without name
+    public void noTitleAlert() {
+        //create alert box
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        //alert title
+        alert.setTitle("Eh-hem, forget something?")
+                //alert message
+                .setMessage("You MUST enter a List Name")
+                //if user clicks yes
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+
+                })
+                .show();
+    }
+
+
     //retrieves data from the db and places into the correct fields so user can edit them
     private void retrieveData(){
         //will hold selected information
@@ -76,6 +102,7 @@ public class listEditor extends ListActivity {
         //retrieve data from row
         Cursor c = dbm.readList(id);
 
+        //move through the cursor
         if (c.moveToFirst()){
             do{
                 data = c.getString(c.getColumnIndex("listTitle"));
@@ -85,7 +112,7 @@ public class listEditor extends ListActivity {
                 listDescription.setText(data);
 
 
-            }while(c.moveToNext());
+            }while(c.moveToNext());//move to next item in cursor
         }
         c.close();
 

@@ -2,22 +2,24 @@ package com.example.david.myapplication;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Random;
 
 /**
  * Created by david on 27/11/16.
+ * contains code to adapt information sent in, to the custom row
  */
 
-//ref https://stackoverflow.com/questions/13631075/listview-with-cursoradapter
-//ref https://developer.android.com/reference/android/widget/CursorAdapter.html
+//Reference: In order to create a custom cursor adapter I had to research what was neeeded. This code has been ADAPTED from the following links
+// https://stackoverflow.com/questions/13631075/listview-with-cursoradapter
+//https://developer.android.com/reference/android/widget/CursorAdapter.html
+
+//controls the retrieval of information and placing it into the custom row
 public class customCursorAdapter extends CursorAdapter {
 
     int customRow;
@@ -28,11 +30,12 @@ public class customCursorAdapter extends CursorAdapter {
     int [] to;
 
 
-
+    //constructor
     public customCursorAdapter(Context context, Cursor cursor, int customRow, String [] from, int [] to)
     {
         super(context, cursor, 0);
 
+        //place the row id into customRow
         this.customRow=customRow;
 
         //place from array into this classes from array
@@ -65,23 +68,32 @@ public class customCursorAdapter extends CursorAdapter {
                 //find the list id
                 long listId =cursor.getLong(cursor.getColumnIndex("listID"));
 
-                databaseManager dbm = new databaseManager(context);
-                dbm.open();
+                //if not part of default list
+                if(listId>=0) {
 
-                //retrieve data from row
-                Cursor c = dbm.readList(listId);
+                    databaseManager dbm = new databaseManager(context);
+                    dbm.open();
 
-                if (c.moveToFirst()) {
-                    do {
-                        //get the colour associated with that list
-                        int listColour = c.getInt(c.getColumnIndex("listColour"));
-                        //set the text colour to that list colour
-                        temp.setTextColor(listColour);
-                    } while (c.moveToNext());
+                    //retrieve data from row
+                    Cursor c = dbm.readList(listId);
+
+                    if (c.moveToFirst()) {
+                        do {
+                            //get the colour associated with that list
+                            int listColour = c.getInt(c.getColumnIndex("listColour"));
+                            //set the text colour to that list colour
+                            temp.setTextColor(listColour);
+                        } while (c.moveToNext());
+                    }
+                    c.close();
+
+                    dbm.close();
                 }
-                c.close();
-
-                dbm.close();
+                //if part of default list
+                else{
+                    //set default colour
+                    temp.setTextColor(ContextCompat.getColor(context, R.color.defualtColour));
+                }
             }
             //if in list list view
             else{
@@ -98,3 +110,5 @@ public class customCursorAdapter extends CursorAdapter {
 
     }
 }
+
+//End Reference

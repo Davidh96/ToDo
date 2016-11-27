@@ -7,15 +7,20 @@ import android.widget.Toast;
 
 /**
  * Created by david on 13/11/16.
+ * contains code for the editing of a task
  */
 
+//saves details of an edited task
 public class editTask extends taskEditor {
 
     //is run when a user clicks the 'done' button
     public void complete(View v)
     {
+        //if the title is not empty
         if(!titleBox.getText().toString().equals("")) {
             databaseManager database = new databaseManager(this);
+
+            //open database
             database.open();
             listID=listIDs.get(listChoice.getSelectedItemPosition());
 
@@ -34,6 +39,7 @@ public class editTask extends taskEditor {
             //return to main activity
             finish();
         }
+        //if the title is empty
         else{
             noTitleAlert();
         }

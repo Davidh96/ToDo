@@ -17,8 +17,10 @@ import java.util.ArrayList;
 
 /**
  * Created by david on 15/11/16.
+ * contains code that is used by its subclasses in editing/adding tasks
  */
 
+//super class that contains functionality used by the edit/adding task classes
 public class taskEditor extends Activity {
 
     ArrayAdapter<String> adapter;
@@ -41,6 +43,7 @@ public class taskEditor extends Activity {
     ArrayList<String> lists = new ArrayList<String>();
     ArrayList<Long> listIDs = new ArrayList<Long>();
 
+    //called when task editor is being created
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addingtask);
@@ -121,7 +124,7 @@ public class taskEditor extends Activity {
         dbm.close();
     }
 
-    //ref https://developer.android.com/guide/topics/ui/controls/spinner.html
+    //populates spinner with the lists that the user can add a task to
     public void populateListChoice() {
 
         //will hold selected information
@@ -159,24 +162,24 @@ public class taskEditor extends Activity {
         listChoice.setAdapter(adapter);
     }
 
+    //opens up screen to allow user to pick a start date and time
     public void chooseStartDate(View v) {
 
         Intent chooseDate = new Intent(this, chooseDateTime.class);
         //the user is choosing the start date
         chooseDate.putExtra("forWhatDate", "Start");
 
-        //ref https://developer.android.com/reference/android/app/Activity.html#startActivityForResult(android.content.Intent,%20int,%20android.os.Bundle)
         startActivityForResult(chooseDate, 0);
 
     }
 
+    //opens up screen to allow user to pick a end date and time
     public void chooseEndDate(View v) {
 
         Intent chooseDate = new Intent(this, chooseDateTime.class);
         //the user is choosing the end date
         chooseDate.putExtra("forWhatDate", "End");
 
-        //ref https://developer.android.com/reference/android/app/Activity.html#startActivityForResult(android.content.Intent,%20int,%20android.os.Bundle)
         startActivityForResult(chooseDate, 0);
 
     }
@@ -252,8 +255,8 @@ public class taskEditor extends Activity {
     protected void onRestart()
     {
         super.onRestart();
+        lists.clear();
         populateListChoice();
-
     }
 
 
