@@ -6,15 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -132,8 +129,13 @@ public class taskEditor extends Activity {
 
         databaseManager dbm = new databaseManager(this);
         dbm.open();
-        lists.add("Default");
-        listIDs.add((long)-1);
+
+        //makes sure that Default is not already created
+        if(lists.size()<1) {
+            lists.add("Default");
+            listIDs.add((long) -1);
+        }
+
         //retrieve data from row
         Cursor c = dbm.readLists();
 
@@ -251,6 +253,7 @@ public class taskEditor extends Activity {
     {
         super.onRestart();
         populateListChoice();
+
     }
 
 

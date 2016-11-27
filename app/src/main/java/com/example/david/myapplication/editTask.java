@@ -1,20 +1,9 @@
 package com.example.david.myapplication;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
+
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
 /**
  * Created by david on 13/11/16.
@@ -34,10 +23,13 @@ public class editTask extends taskEditor {
             //grab infromation from user input
             Task updateTask = new Task(titleBox.getText().toString(), descriptionBox.getText().toString(), listID,
                     chosenStartDate, chosenEndDate);
-            //iupdate row in db
+            //update row in db
             database.updateTask(updateTask, id);
 
             database.close();
+
+            //notifies user of task changes being saved
+            Toast.makeText(this,"Task Saved",Toast.LENGTH_SHORT).show();
 
             //return to main activity
             finish();

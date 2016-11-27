@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -25,7 +23,7 @@ import android.widget.Toast;
 public class taskListView extends ListActivity {
 
     public static Cursor c;
-    public static SimpleCursorAdapter adapt;
+    public static customCursorAdapter adapt;
     Spinner menuListPage;
 
     databaseManager dbm;
@@ -52,7 +50,7 @@ public class taskListView extends ListActivity {
         //retrieve cursor of all rows from db
         c = dbm.readLists();
         //create adapter which displays task title
-        adapt = new SimpleCursorAdapter(this, R.layout.list_row, c, columns, to,0);
+        adapt = new customCursorAdapter(this,c, R.layout.list_row,columns,to);
         //set adapter
         setListAdapter(adapt);
         dbm.close();
@@ -65,8 +63,6 @@ public class taskListView extends ListActivity {
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
                 Intent editList = new Intent(taskListView.this,editList.class);
-                //editTask.putExtra("id",id);
-                Toast.makeText(taskListView.this, "" + id, Toast.LENGTH_SHORT).show();
                 editList.putExtra("id",id);
                 startActivity(editList);
             }
@@ -95,7 +91,7 @@ public class taskListView extends ListActivity {
                                 dbm.open();
                                 boolean deleted = dbm.deleteList((id));
                                 if(deleted==true) {
-                                    Toast.makeText(taskListView.this, "Deleted List", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(taskListView.this, "List Deleted", Toast.LENGTH_SHORT).show();
                                 }
                                 dbm.close();
                             }

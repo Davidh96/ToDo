@@ -13,26 +13,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CursorAdapter;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import static com.example.david.myapplication.R.styleable.Spinner;
 
 public class MainActivity extends ListActivity {
 
-    public static SimpleCursorAdapter adapt;
+//    public static SimpleCursorAdapter adapt;
+    public static customCursorAdapter adapt;
     public static ArrayAdapter<String> adapter;
 
     static databaseManager dbm;
@@ -47,10 +40,8 @@ public class MainActivity extends ListActivity {
     String[] listItems;
 
 
-    //String[] listItems = new String[]{"Tasks","Lists"};
 
     //ref https://developer.android.com/guide/topics/ui/notifiers/notifications.html
-    //
     NotificationCompat.Builder notif;
 
 
@@ -87,10 +78,17 @@ public class MainActivity extends ListActivity {
         c = dbm.readTasks();
         System.out.println(c);
         //c.close();
-        //create adapter which displays task title
-        adapt = new SimpleCursorAdapter(this, R.layout.task_row, c, columns, to,0);
-        //set adapter
+
+        adapt=new customCursorAdapter(this,c, R.layout.task_row,columns,to);
         setListAdapter(adapt);
+
+
+//        //create adapter which displays task title
+//        adapt = new SimpleCursorAdapter(this, R.layout.task_row, c, columns, to,0);
+//        //set adapter
+//        setListAdapter(adapt);
+
+
         dbm.close();
 
         ListView lv = (ListView)findViewById(android.R.id.list);
@@ -101,8 +99,6 @@ public class MainActivity extends ListActivity {
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
                 Intent editTask = new Intent(MainActivity.this,editTask.class);
-                //editTask.putExtra("id",id);
-                Toast.makeText(MainActivity.this, "" + id, Toast.LENGTH_SHORT).show();
                 editTask.putExtra("id",id);
                 startActivity(editTask);
             }
@@ -120,7 +116,7 @@ public class MainActivity extends ListActivity {
                 dbm.open();
                 boolean deleted = dbm.deleteTask((id));
                 if(deleted==true) {
-                    Toast.makeText(MainActivity.this, "Deleted Task", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Task Deleted", Toast.LENGTH_SHORT).show();
                 }
                 dbm.close();
 

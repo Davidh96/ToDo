@@ -1,6 +1,5 @@
 package com.example.david.myapplication;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,14 +8,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 /**
  * Created by david on 18/11/16.
  */
 
 public class listEditor extends ListActivity {
+
     EditText listTitle;
     EditText listDescription;
 
@@ -47,7 +45,7 @@ public class listEditor extends ListActivity {
         //retrieve cursor of all rows from db
         Cursor c = dbm.readListTasks(id);
         //create adapter which displays task title
-        SimpleCursorAdapter adapt = new SimpleCursorAdapter(this, R.layout.task_row, c, columns, to,0);
+        customCursorAdapter adapt = new customCursorAdapter(this,c, R.layout.task_row,columns,to);
         //set adapter
         setListAdapter(adapt);
         dbm.close();
@@ -62,8 +60,6 @@ public class listEditor extends ListActivity {
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
                 Intent editTask = new Intent(listEditor.this,editTask.class);
-                //editTask.putExtra("id",id);
-                Toast.makeText(listEditor.this, "" + id, Toast.LENGTH_SHORT).show();
                 editTask.putExtra("id",id);
                 startActivity(editTask);
             }

@@ -1,12 +1,9 @@
 package com.example.david.myapplication;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
+
 
 /**
  * Created by david on 13/11/16.
@@ -25,6 +22,9 @@ public class addingList extends listEditor {
             dbm.open();
             dbm.addList(newList);
             dbm.close();
+
+            //notifies user of task changes being saved
+            Toast.makeText(this,"List Saved",Toast.LENGTH_SHORT).show();
 
             finish();
         }

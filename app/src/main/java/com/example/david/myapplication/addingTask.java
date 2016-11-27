@@ -1,20 +1,8 @@
 package com.example.david.myapplication;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.sql.Date;
-import java.util.ArrayList;
 
 /**
  * Created by david on 03/11/16.
@@ -40,6 +28,9 @@ public class addingTask extends taskEditor {
             database.addTask(newTask);
 
             database.close();
+
+            //notifies user of task changes being saved
+            Toast.makeText(this,"Task Saved",Toast.LENGTH_SHORT).show();
 
             //return to main activity
             finish();

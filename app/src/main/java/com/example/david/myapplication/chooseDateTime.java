@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 /**
  * Created by david on 13/11/16.
@@ -49,7 +47,6 @@ public class chooseDateTime extends Activity{
         //retrun ok result code
         setResult(RESULT_OK,i);
 
-        //Toast.makeText(this,which , Toast.LENGTH_SHORT).show();
         finish();
 
     }
@@ -70,7 +67,6 @@ public class chooseDateTime extends Activity{
         //retrun ok result code
         setResult(RESULT_OK,i);
 
-        //Toast.makeText(this,which , Toast.LENGTH_SHORT).show();
         finish();
     }
 }
