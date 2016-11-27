@@ -1,8 +1,11 @@
 package com.example.david.myapplication;
 
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.Random;
 
 
 /**
@@ -16,6 +19,7 @@ public class addingList extends listEditor {
     public void complete(View V)
     {
         if(!listTitle.getText().toString().equals("")) {
+
             List newList = new List(listTitle.getText().toString(), listDescription.getText().toString());
 
             databaseManager dbm = new databaseManager(this);

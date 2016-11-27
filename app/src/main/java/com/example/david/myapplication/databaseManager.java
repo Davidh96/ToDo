@@ -35,7 +35,8 @@ public class databaseManager extends SQLiteOpenHelper {
     String createListTable = "Create Table " + listTableName +"(" +
             "_id integer primary key autoincrement," +
             "listTitle text," +
-            "listDescription text"+
+            "listDescription text,"+
+            "listColour integer"+
             ");";
 
     public databaseManager(Context context) {
@@ -94,6 +95,7 @@ public class databaseManager extends SQLiteOpenHelper {
         ContentValues newInsert = new ContentValues();
         newInsert.put("listTitle",newList.getListTitle());
         newInsert.put("listDescription",newList.getListDescription());
+        newInsert.put("listColour",newList.getColour());
 
         //insert new values into db
         db.insert(listTableName,null,newInsert);
@@ -184,7 +186,8 @@ public class databaseManager extends SQLiteOpenHelper {
         return   db.query(listTableName,new String[]{
                 "_id",
                 "listTitle",
-                "listDescription"
+                "listDescription",
+                "listColour"
         },null,null,null,null,null);
 
 
@@ -209,7 +212,8 @@ public class databaseManager extends SQLiteOpenHelper {
         return   db.query(listTableName,new String[]{
                 "_id",
                 "listTitle",
-                "listDescription"
+                "listDescription",
+                "listColour"
         },"_id" + "=" +rowID,null,null,null,null);
 
 

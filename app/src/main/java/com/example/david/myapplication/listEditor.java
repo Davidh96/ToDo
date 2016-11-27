@@ -50,8 +50,6 @@ public class listEditor extends ListActivity {
         setListAdapter(adapt);
         dbm.close();
 
-        //populateList();
-
         ListView lv = (ListView)findViewById(android.R.id.list);
 
         //open up screen to allow user to edit task

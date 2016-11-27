@@ -67,7 +67,7 @@ public class MainActivity extends ListActivity {
 
 
         //information I want to retriev from the db
-        String[] columns = new String[]{"taskTitle","taskDescription"};
+        String[] from = new String[]{"taskTitle","taskDescription"};
         //where i want to dsiplay the informtion
         int[] to =new int[] {R.id.taskTitle,R.id.taskDescriptionView};
 
@@ -76,10 +76,9 @@ public class MainActivity extends ListActivity {
         dbm.open();
         //retrieve cursor of all rows from db
         c = dbm.readTasks();
-        System.out.println(c);
         //c.close();
 
-        adapt=new customCursorAdapter(this,c, R.layout.task_row,columns,to);
+        adapt=new customCursorAdapter(this,c, R.layout.task_row,from,to);
         setListAdapter(adapt);
 
 
